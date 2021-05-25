@@ -35,26 +35,25 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let { message ->
-                        Log.e("TAG", "Error: $message")
+                        Log.e("TAG", "An error: $message")
                     }
                 }
                 is Resource.Loading -> {
                     showProgressBar()
-
                 }
             }
         })
-    }
-
-    private fun showProgressBar() {
-        pagination_progress_bar.visibility = View.VISIBLE
     }
 
     private fun hideProgressBar() {
         pagination_progress_bar.visibility = View.INVISIBLE
     }
 
-    private fun setupRecyclerView() {
+    private fun showProgressBar() {
+        pagination_progress_bar.visibility = View.VISIBLE
+    }
+
+    private fun setupRecyclerView () {
         newsAdapter = NewsAdapter()
         rv_breaking_news.apply {
             adapter = newsAdapter
