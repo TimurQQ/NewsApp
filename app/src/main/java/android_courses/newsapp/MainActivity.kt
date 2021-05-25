@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
 		// добавляем фрагмент
 		val splashScreenFragment = SplashScreenFragment()
-		fragmentTransaction.add(splashScreenFragment, "fragment_splash_screen")
+		fragmentTransaction.add(R.id.container, splashScreenFragment)
 		fragmentTransaction.commit()
 
         saveFileManager.registerCallBack(object : FileManager.Callback {
