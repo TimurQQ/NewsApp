@@ -1,7 +1,6 @@
 package android_courses.newsapp
 
 import android.os.Bundle
-import android_courses.newsapp.model.NewsResponse
 import android_courses.newsapp.repository.NewsRepository
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -16,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         val newsRepository = NewsRepository()
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
-        viewModel =ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
 
 
     }
