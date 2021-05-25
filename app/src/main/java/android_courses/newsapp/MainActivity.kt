@@ -10,6 +10,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 
@@ -26,6 +28,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // получаем экземпляр FragmentTransaction
+		val fragmentManager : FragmentManager = supportFragmentManager
+		val fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
+
+		// добавляем фрагмент
+		val splashScreenFragment = SplashScreenFragment()
+		fragmentTransaction.add(splashScreenFragment, "fragment_splash_screen")
+		fragmentTransaction.commit()
 
         saveFileManager.registerCallBack(object : FileManager.Callback {
             override fun callingBack(s: String?) {
