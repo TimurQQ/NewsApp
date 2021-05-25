@@ -16,6 +16,11 @@ import kotlin.coroutines.CoroutineContext
 
 
 class SplashScreenFragment : Fragment(), CoroutineScope {
+
+    companion object {
+        private const val TIME : Long = 2000
+    }
+
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + Job()
 
@@ -26,9 +31,9 @@ class SplashScreenFragment : Fragment(), CoroutineScope {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         launch {
-            delay(10000)
+            delay(TIME)
             withContext(Dispatchers.Main){
-                (activity as MainActivity).startActivity(Intent(context, MainActivity::class.java))
+                (activity as MainActivity).moveToNext()
             }
         }
     }

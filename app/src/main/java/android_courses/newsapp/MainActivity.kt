@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -72,5 +73,10 @@ class MainActivity : AppCompatActivity() {
         val loadClick = View.OnClickListener { loadFileManager.getDataFromFile(baseContext)}
         val loadBtn = findViewById<Button>(R.id.load_button)
         loadBtn.setOnClickListener(loadClick)
+    }
+
+    fun moveToNext() {
+        Log.d("SPLASH_SCREEN", "переходим на LoginFragment")
+        //TODO: Переходим на LoginFragment
     }
 }
