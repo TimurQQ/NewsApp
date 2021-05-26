@@ -4,12 +4,15 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 
@@ -26,6 +29,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // получаем экземпляр FragmentTransaction
+		val fragmentManager : FragmentManager = supportFragmentManager
+		val fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
+
+		// добавляем фрагмент
+		val splashScreenFragment = SplashScreenFragment()
+		fragmentTransaction.add(R.id.container, splashScreenFragment)
+		fragmentTransaction.commit()
 
         saveFileManager.registerCallBack(object : FileManager.Callback {
             override fun callingBack(s: String?) {
@@ -61,5 +73,10 @@ class MainActivity : AppCompatActivity() {
         val loadClick = View.OnClickListener { loadFileManager.getDataFromFile(baseContext)}
         val loadBtn = findViewById<Button>(R.id.load_button)
         loadBtn.setOnClickListener(loadClick)
+    }
+
+    fun moveToNext() {
+        Log.d("SPLASH_SCREEN", "переходим на LoginFragment")
+        //TODO: Переходим на LoginFragment
     }
 }
