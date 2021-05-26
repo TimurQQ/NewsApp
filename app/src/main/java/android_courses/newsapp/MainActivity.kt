@@ -25,14 +25,13 @@ class MainActivity : AppCompatActivity() {
     val storage = FirebaseStorage.getInstance()
     val storageRef = storage.reference
 
+    private val fragmentManager : FragmentManager = supportFragmentManager
+    private val fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        // получаем экземпляр FragmentTransaction
-		val fragmentManager : FragmentManager = supportFragmentManager
-		val fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
 
 		// добавляем фрагмент
 		val splashScreenFragment = SplashScreenFragment()
@@ -73,7 +72,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun moveToNext() {
+        val signInFragment = SignInFragment()
+        fragmentTransaction.add(R.id.container, signInFragment)
+        fragmentTransaction.commit()
         Log.d("SPLASH_SCREEN", "переходим на LoginFragment")
-        //TODO: Переходим на LoginFragment
     }
 }
