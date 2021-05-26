@@ -13,9 +13,9 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.Fragment
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,11 +47,8 @@ class MainActivity : AppCompatActivity() {
         })
         loadFileManager.registerCallBack(object : FileManager.Callback {
             override fun callingBack(s: String?) {
-                //TODO:: Загружаем данные на сервер
-
                 val data = s!!.toByteArray()
-                val textRef = storageRef.child("/HELLO_WORLD.txt")
-
+                val textRef = storageRef.child("HELLO_WORLD.txt")
                 val uploadTask: UploadTask = textRef.putBytes(data)
                 uploadTask.addOnFailureListener { }.addOnSuccessListener { }
             }
