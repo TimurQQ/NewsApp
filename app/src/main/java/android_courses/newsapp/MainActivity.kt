@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
     private val loadFileManager = FileManager()
     val storage = FirebaseStorage.getInstance()
     val storageRef = storage.reference
-    private var currentFragment: Fragment = SignInFragment()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {

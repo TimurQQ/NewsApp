@@ -1,6 +1,5 @@
 package android_courses.newsapp
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.LayoutInflater
