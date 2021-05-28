@@ -1,6 +1,6 @@
 package android_courses.newsapp.network
 
-import android_courses.newsapp.Constants.Companion.BASE_URL
+import android_courses.newsapp.Utill.Constants.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

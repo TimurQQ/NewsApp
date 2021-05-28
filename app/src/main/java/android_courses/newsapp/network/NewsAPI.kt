@@ -1,6 +1,6 @@
 package android_courses.newsapp.network
 
-import android_courses.newsapp.Constants.Companion.API_KEY
+import android_courses.newsapp.Utill.Constants.Companion.API_KEY
 import android_courses.newsapp.model.NewsResponse
 import retrofit2.Response
 import retrofit2.http.GET

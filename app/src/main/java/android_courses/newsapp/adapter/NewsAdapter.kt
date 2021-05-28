@@ -3,8 +3,11 @@ package android_courses.newsapp.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android_courses.newsapp.R
+import android_courses.newsapp.Utill.Extensions.loadFromUrl
 import android_courses.newsapp.model.Article
+import androidx.core.widget.ImageViewCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -41,7 +44,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         val article = differ.currentList[position]
 
         holder.itemView.apply {
-            Glide.with(this).load(article.urlToImage).into(iv_article_image)
+            iv_article_image.loadFromUrl(article.urlToImage)
             tv_title.text = article.title
             tv_description.text = article.description
             setOnClickListener {

@@ -3,10 +3,8 @@ package android_courses.newsapp.fragments
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android_courses.newsapp.NewsViewModel
-import android_courses.newsapp.NewsViewModelProviderFactory
-import android_courses.newsapp.R
-import android_courses.newsapp.Resource
+import android_courses.newsapp.*
+import android_courses.newsapp.Utill.Resource
 import android_courses.newsapp.adapter.NewsAdapter
 import android_courses.newsapp.repository.NewsRepository
 import androidx.fragment.app.Fragment
@@ -22,11 +20,11 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecyclerView()
 
         val newsRepository = NewsRepository()
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
+        setupRecyclerView()
 
         viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
             when (response) {

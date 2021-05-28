@@ -1,5 +1,6 @@
 package android_courses.newsapp
 
+import android_courses.newsapp.Utill.Resource
 import android_courses.newsapp.model.NewsResponse
 import android_courses.newsapp.repository.NewsRepository
 import androidx.lifecycle.MutableLiveData
