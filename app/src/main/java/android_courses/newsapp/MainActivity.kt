@@ -11,12 +11,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val newsFragment  = NewsFragment ()
-        makeCurrentFragment(newsFragment)
     }
-    private fun makeCurrentFragment(fragment: Fragment) =
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.fl_wrapper, fragment)
-                commit()
-            }
 }
