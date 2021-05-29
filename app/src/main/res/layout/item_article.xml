@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cv_CardView"
     android:layout_width="match_parent"
@@ -15,14 +15,17 @@
         android:src="@mipmap/ic_launcher_round"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/roundImgView" />
+        app:shapeAppearanceOverlay="@style/roundImgView">
+    </com.google.android.material.imageview.ShapeableImageView>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="0dp"
         android:background="@drawable/tv_style"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/iv_article_image">
 
         <TextView
             android:id="@+id/tv_title"
@@ -31,33 +34,41 @@
             android:layout_gravity="center"
             android:ellipsize="end"
             android:gravity="center"
-            android:paddingStart="60dp"
-            android:paddingEnd="60dp"
+            android:paddingStart="66dp"
+            android:paddingEnd="66dp"
             android:text="@string/title"
             android:textColor="@android:color/black"
             android:textSize="15sp"
-            app:layout_constraintLeft_toRightOf="@+id/iv_article_image"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/iv_article_image" />
 
         <TextView
             android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="2"
-            android:paddingStart="30dp"
-            android:paddingTop="2dp"
-            android:paddingEnd="30dp"
-            android:paddingBottom="4dp"
+            android:paddingStart="50dp"
+            android:paddingEnd="50dp"
             android:text="@string/description"
             android:textColor="@color/grey_description"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_article_image"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+    </LinearLayout>
 
-    </LinearLayout>
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="13dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="310dp"
+        android:layout_marginTop="165dp"
+        android:src="@drawable/downloadcircularbutton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/viewimage" />
+</androidx.constraintlayout.widget.ConstraintLayout>
