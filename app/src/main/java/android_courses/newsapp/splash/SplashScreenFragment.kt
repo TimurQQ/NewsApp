@@ -1,19 +1,15 @@
-package android_courses.newsapp
+package android_courses.newsapp.splash
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
-import android_courses.newsapp.MainActivity
 import android_courses.newsapp.R
+import android_courses.newsapp.activity.MainActivity
+import android_courses.newsapp.base.BaseActivity
 import androidx.fragment.app.Fragment
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
-
 
 class SplashScreenFragment : Fragment(), CoroutineScope {
 
@@ -33,7 +29,7 @@ class SplashScreenFragment : Fragment(), CoroutineScope {
         launch {
             delay(TIME)
             withContext(Dispatchers.Main){
-                (activity as MainActivity).moveToNext()
+                (activity as BaseActivity).fragmentRouter.openLogInFragment()
             }
         }
     }
