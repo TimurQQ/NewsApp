@@ -14,4 +14,6 @@
     <string name="title">title</string>
     <string name="description">description</string>
     <string name="viewimage">ViewImage</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

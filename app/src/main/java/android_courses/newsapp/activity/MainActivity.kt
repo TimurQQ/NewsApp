@@ -9,18 +9,9 @@ import androidx.fragment.app.FragmentTransaction
 
 class MainActivity : BaseActivity(R.id.container){
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         fragmentRouter.openSplashFragment()
-
-
-        val newsFragment = NewsFragment ()
-        val fragmentManager : FragmentManager = supportFragmentManager
-        val fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.container, newsFragment)
-        fragmentTransaction.commit()
     }
 }
