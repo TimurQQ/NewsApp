@@ -71,3 +71,49 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     }
 
 }
+
+//override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//    super.onViewCreated(view, savedInstanceState)
+//    val newsRepository = NewsRepository()
+//    val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
+//    viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
+//    setupRecyclerView()
+//
+//    viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
+//        when (response) {
+//            is Resource.Success -> {
+//                hideProgressBar()
+//                response.data?.let { newsResponse ->
+//                    newsAdapter.differ.submitList(newsResponse.articles)
+//                }
+//            }
+//            is Resource.Error -> {
+//                hideProgressBar()
+//                response.message?.let { message ->
+//                    Log.e("TAG", "An error: $message")
+//                }
+//            }
+//            is Resource.Loading -> {
+//                showProgressBar()
+//            }
+//        }
+//    })
+//}
+//
+//private fun hideProgressBar() {
+//    pagination_progress_bar.visibility = View.INVISIBLE
+//}
+//
+//private fun showProgressBar() {
+//    pagination_progress_bar.visibility = View.VISIBLE
+//}
+//
+//private fun setupRecyclerView () {
+//    newsAdapter = NewsAdapter()
+//    rv_breaking_news.apply {
+//        adapter = newsAdapter
+//        layoutManager = LinearLayoutManager(activity)
+//    }
+//}
+//
+//}
