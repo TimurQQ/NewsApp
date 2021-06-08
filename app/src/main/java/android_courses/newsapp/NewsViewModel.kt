@@ -11,18 +11,35 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
 
-class NewsViewModel(val newsRepository: NewsRepository) : ViewModel() {
+class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
 
-    val breakingNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
+    val breakingNewsListLiveData: MutableLiveData<NewsResponse> = MutableLiveData()
+    val errorStateLiveData: MutableLiveData<String> = MutableLiveData()
+    val loadingMutableLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
     init {
         getBreakingNews("us")
     }
 
     fun getBreakingNews(countryCode: String) = viewModelScope.launch {
-        breakingNews.postValue(Resource.Loading())
+        loadingMutableLiveData.postValue(true)
         val response = newsRepository.getBreakingNews(countryCode)
-        breakingNews.postValue(handleBreakingNewsResponse(response))
+
+        //breakingNewsListLiveData.postValue(breakingNewsResponse(response))
+
+//        when(response){
+//            is Resource.Success -> {
+//              breakingNewsListLiveData.postValue(response.data?.let { news ->
+//                  breakingNewsListLiveData.postValue(news)
+//              })
+//                loadingMutableLiveData.postValue(false)
+//            }
+//            is Resource.Error<*> -> {
+//               errorStateLiveData.postValue("Ошибочка")
+//                loadingMutableLiveData.postValue(false)
+//            }
+//        }
+//        breakingNewsListLiveData.postValue(handleBreakingNewsResponse(response))
     }
 
     private fun breakingNewsResponse(response: Response<NewsResponse>, countryCode: String) {

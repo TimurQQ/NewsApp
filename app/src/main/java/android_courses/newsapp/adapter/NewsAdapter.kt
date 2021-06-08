@@ -4,14 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android_courses.newsapp.R
-import android_courses.newsapp.Utill.Extensions.loadFromUrl
+import android_courses.newsapp.Utill.loadFromUrl
 import android_courses.newsapp.model.Article
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_article.view.*
 
-class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
+class NewsAdapter(val onClick :(Article) -> Unit) : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     inner class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -35,18 +35,12 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
             tv_title.text = article.title
             tv_description.text = article.description
             setOnClickListener {
-                setOnClickListener {
-                    onItemClickListener?.let { it(article) }
-                }
+               onClick.invoke(article)
             }
         }
     }
 
-    private var onItemClickListener: ((Article) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (Article) -> Unit) {
-        onItemClickListener = listener
-    }
 }
 
 
