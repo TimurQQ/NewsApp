@@ -29,7 +29,7 @@ class SplashScreenFragment : Fragment(), CoroutineScope {
         launch {
             delay(TIME)
             withContext(Dispatchers.Main){
-                (activity as BaseActivity).fragmentRouter.openLogInFragment()
+                (requireActivity() as BaseActivity).fragmentRouter.openLogInFragment()
             }
         }
     }

@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import android_courses.newsapp.base.BaseActivity
+import android_courses.newsapp.base.FragmentRouter
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
+import android_courses.newsapp.base.Router as Router
 
 class SignInFragment : Fragment(), View.OnClickListener {
 
@@ -70,7 +73,8 @@ class SignInFragment : Fragment(), View.OnClickListener {
             .addOnCompleteListener { task ->
                 progressBar!!.visibility = View.GONE
                 if (task.isSuccessful) {
-                   //TODO:: start ProfileFragment
+                    (requireActivity() as BaseActivity).fragmentRouter.openNewsFragment()
+                    //TODO::start ProfileFragment
                 } else {
                     Toast.makeText(
                         context,
