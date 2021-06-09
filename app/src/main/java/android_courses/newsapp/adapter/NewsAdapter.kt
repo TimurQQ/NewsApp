@@ -39,9 +39,4 @@ class NewsAdapter(val onClick :(Article) -> Unit) : RecyclerView.Adapter<NewsAda
             }
         }
     }
-
-
 }
-
-
-

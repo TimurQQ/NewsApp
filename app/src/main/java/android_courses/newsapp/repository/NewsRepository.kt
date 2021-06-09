@@ -8,7 +8,3 @@ class NewsRepository : Repository {
         return RetrofitInstance.api.getNews(countryCode)
     }
 }
-
-
-
-
