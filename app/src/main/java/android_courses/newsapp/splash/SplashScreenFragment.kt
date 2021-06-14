@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android_courses.newsapp.R
-import android_courses.newsapp.activity.MainActivity
 import android_courses.newsapp.base.BaseActivity
 import androidx.fragment.app.Fragment
 import kotlinx.coroutines.*

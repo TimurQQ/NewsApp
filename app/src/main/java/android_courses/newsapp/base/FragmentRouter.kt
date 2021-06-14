@@ -1,6 +1,7 @@
 package android_courses.newsapp.base
 
 import android_courses.newsapp.SignInFragment
+import android_courses.newsapp.SignUpFragment
 import android_courses.newsapp.fragments.NewsFragment
 import android_courses.newsapp.splash.SplashScreenFragment
 import androidx.fragment.app.Fragment
@@ -17,6 +18,9 @@ class FragmentRouter(private val containerId: Int, private val fragmentManager: 
         openFragment(SignInFragment())
     }
 
+    override fun openSignUpFragment() {
+        openFragment(SignUpFragment())
+    }
     override fun openSplashFragment() {
         openFragment(SplashScreenFragment())
     }

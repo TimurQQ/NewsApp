@@ -1,11 +1,8 @@
 package android_courses.newsapp.activity
 
 import android.os.Bundle
-import android_courses.newsapp.*
+import android_courses.newsapp.R
 import android_courses.newsapp.base.BaseActivity
-import android_courses.newsapp.fragments.NewsFragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 
 class MainActivity : BaseActivity(R.id.container){
 
