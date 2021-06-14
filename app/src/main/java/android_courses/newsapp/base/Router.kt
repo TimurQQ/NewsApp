@@ -6,4 +6,5 @@ interface Router {
     fun openSplashFragment()
     fun openNewsFragment()
     fun openSelectionFragment()
+    fun openSettingsFragment()
 }

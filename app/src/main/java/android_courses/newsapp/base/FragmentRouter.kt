@@ -3,6 +3,7 @@ package android_courses.newsapp.base
 import android_courses.newsapp.R
 import android_courses.newsapp.SignInFragment
 import android_courses.newsapp.SignUpFragment
+import android_courses.newsapp.fragments.FragmentSetting
 import android_courses.newsapp.fragments.NewsFragment
 import android_courses.newsapp.fragments.SelectionFragment
 import android_courses.newsapp.splash.SplashScreenFragment
@@ -22,11 +23,10 @@ class FragmentRouter(private val containerId: Int, private val fragmentManager: 
                 .addToBackStack(null)
                 .commit()
     }
-
-    private fun addFragmentWithAnimation(fragment: Fragment) {
+    private fun addFragmentWithAnimation(fragment: Fragment, anim_open: Int = R.animator.slide_in_left,
+                                         anim_close: Int = R.animator.slide_in_right) {
         val transaction = fragmentManager.beginTransaction()
-        transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right,
-                R.animator.slide_in_left, R.animator.slide_in_right)
+        transaction.setCustomAnimations(anim_open, anim_close, anim_open, anim_close)
         transaction.add(containerId, fragment)
                 .addToBackStack(null)
                 .commit()
@@ -34,6 +34,12 @@ class FragmentRouter(private val containerId: Int, private val fragmentManager: 
 
     override fun openLogInFragment() {
         replaceFragment(SignInFragment())
+    }
+
+    override fun openSettingsFragment() {
+        addFragmentWithAnimation(FragmentSetting(),
+                R.animator.slide_out_right,
+                R.animator.slide_out_left)
     }
 
     override fun openSelectionFragment() {
