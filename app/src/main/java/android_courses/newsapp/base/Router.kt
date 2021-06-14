@@ -5,5 +5,5 @@ interface Router {
     fun openSignUpFragment()
     fun openSplashFragment()
     fun openNewsFragment()
-
+    fun openSelectionFragment()
 }

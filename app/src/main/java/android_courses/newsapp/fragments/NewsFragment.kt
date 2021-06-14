@@ -26,6 +26,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     lateinit var mAuth: FirebaseAuth
     lateinit var mSettings: SharedPreferences
     lateinit var buttonLogout: AppCompatImageButton
+    lateinit var buttonSelection: AppCompatImageButton
     lateinit var viewModel: NewsViewModel
     private val newsAdapter: NewsAdapter by lazy {
         NewsAdapter {
@@ -65,6 +66,11 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
                 apply()
             }
             (requireActivity() as BaseActivity).fragmentRouter.openSplashFragment()
+        }
+
+        buttonSelection = view.findViewById(R.id.img_settingsLine)
+        buttonSelection.setOnClickListener {
+            (requireActivity() as BaseActivity).fragmentRouter.openSelectionFragment()
         }
     }
 

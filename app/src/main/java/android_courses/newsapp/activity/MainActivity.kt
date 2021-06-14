@@ -11,4 +11,14 @@ class MainActivity : BaseActivity(R.id.container){
         setContentView(R.layout.activity_main)
         fragmentRouter.openSplashFragment()
     }
+
+    override fun onBackPressed() {
+        val count = supportFragmentManager.backStackEntryCount
+        if (count == 0) {
+            super.onBackPressed()
+            //additional code
+        } else {
+            supportFragmentManager.popBackStack()
+        }
+    }
 }

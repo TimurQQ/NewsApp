@@ -104,7 +104,7 @@ class SignUpFragment : Fragment(), View.OnClickListener {
         when (view.id) {
             R.id.buttonSignUp -> registerUser()
             R.id.textViewLogin -> {
-                (requireActivity() as BaseActivity).fragmentRouter.openLogInFragment()
+                requireActivity().supportFragmentManager.popBackStack()
             }
         }
     }
