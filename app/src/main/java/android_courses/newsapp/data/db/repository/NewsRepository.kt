@@ -1,6 +1,7 @@
-package android_courses.newsapp.repository
-import android_courses.newsapp.model.NewsResponse
-import android_courses.newsapp.network.RetrofitInstance
+package android_courses.newsapp.data.db.repository
+
+import android_courses.newsapp.data.db.remote.api.RetrofitInstance
+import android_courses.newsapp.domain.entity.NewsResponse
 import retrofit2.Response
 
 class NewsRepository : Repository {

@@ -1,12 +1,12 @@
 package android_courses.newsapp.base
 
 import android_courses.newsapp.R
-import android_courses.newsapp.fragments.SignInFragment
-import android_courses.newsapp.fragments.SignUpFragment
-import android_courses.newsapp.fragments.FragmentSetting
-import android_courses.newsapp.fragments.NewsFragment
-import android_courses.newsapp.fragments.SelectionFragment
-import android_courses.newsapp.splash.SplashScreenFragment
+import android_courses.newsapp.presentation.fragments.SignInFragment
+import android_courses.newsapp.presentation.fragments.SignUpFragment
+import android_courses.newsapp.presentation.fragments.FragmentSetting
+import android_courses.newsapp.presentation.fragments.NewsFragment
+import android_courses.newsapp.presentation.fragments.SelectionFragment
+import android_courses.newsapp.presentation.fragments.SplashScreenFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 

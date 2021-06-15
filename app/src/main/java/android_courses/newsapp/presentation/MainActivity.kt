@@ -1,9 +1,10 @@
-package android_courses.newsapp.activity
+package android_courses.newsapp.presentation
 
 import android.os.Bundle
 import android.widget.Toast
 import android_courses.newsapp.*
 import android_courses.newsapp.R
+import android_courses.newsapp.Utill.NetworkConnection
 import android_courses.newsapp.base.BaseActivity
 import androidx.lifecycle.Observer
 

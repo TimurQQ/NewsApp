@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package android_courses.newsapp
+package android_courses.newsapp.Utill
 
 import android.annotation.TargetApi
 import android.content.BroadcastReceiver

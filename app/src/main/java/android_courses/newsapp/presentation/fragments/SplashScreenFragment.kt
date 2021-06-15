@@ -1,4 +1,4 @@
-package android_courses.newsapp.splash
+package android_courses.newsapp.presentation.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

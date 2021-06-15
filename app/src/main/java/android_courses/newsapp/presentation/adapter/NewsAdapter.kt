@@ -1,11 +1,11 @@
-package android_courses.newsapp.adapter
+package android_courses.newsapp.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android_courses.newsapp.R
 import android_courses.newsapp.Utill.loadFromUrl
-import android_courses.newsapp.model.Article
+import android_courses.newsapp.domain.entity.Article
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -15,7 +15,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.item_article.view.*
-
 
 class NewsAdapter(val onClick: (Article) -> Unit, val onClickDownload: (String) -> Unit) : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     private val mAuth: FirebaseAuth by lazy {
