@@ -13,7 +13,7 @@ import kotlin.coroutines.CoroutineContext
 class SplashScreenFragment : Fragment(), CoroutineScope {
 
     companion object {
-        private const val TIME : Long = 2000
+        private const val TIME: Long = 2000
     }
 
     override val coroutineContext: CoroutineContext
@@ -27,7 +27,7 @@ class SplashScreenFragment : Fragment(), CoroutineScope {
         super.onViewCreated(view, savedInstanceState)
         launch {
             delay(TIME)
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 (requireActivity() as BaseActivity).fragmentRouter.openLogInFragment()
             }
         }
