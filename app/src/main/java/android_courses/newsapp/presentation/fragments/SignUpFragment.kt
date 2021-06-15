@@ -1,32 +1,28 @@
-package android_courses.newsapp.fragments
+package android_courses.newsapp.presentation.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android_courses.newsapp.R
-import android_courses.newsapp.SignInViewModel
+import android_courses.newsapp.presentation.viewmodel.SignUpViewModel
 import androidx.fragment.app.Fragment
 
-class SignInFragment : Fragment(){
-    private val viewModel: SignInViewModel by lazy {
-        SignInViewModel(requireActivity())
+class SignUpFragment : Fragment() {
+    private val viewModel: SignUpViewModel by lazy {
+        SignUpViewModel(requireActivity())
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_in, container, false)
+        return inflater.inflate(R.layout.fragment_sign_up, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.onViewCreated(view)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        viewModel.onStart()
     }
 }

@@ -1,4 +1,4 @@
-package android_courses.newsapp.splash
+package android_courses.newsapp.presentation.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,7 @@ import kotlin.coroutines.CoroutineContext
 class SplashScreenFragment : Fragment(), CoroutineScope {
 
     companion object {
-        private const val TIME : Long = 2000
+        private const val TIME: Long = 2000
     }
 
     override val coroutineContext: CoroutineContext
@@ -27,7 +27,7 @@ class SplashScreenFragment : Fragment(), CoroutineScope {
         super.onViewCreated(view, savedInstanceState)
         launch {
             delay(TIME)
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 (requireActivity() as BaseActivity).fragmentRouter.openLogInFragment()
             }
         }

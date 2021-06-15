@@ -1,4 +1,4 @@
-package android_courses.newsapp.fragments
+package android_courses.newsapp.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
