@@ -9,23 +9,27 @@ import android_courses.newsapp.NewsViewModelProviderFactory
 import android_courses.newsapp.R
 import android_courses.newsapp.Utill.isVisible
 import android_courses.newsapp.adapter.NewsAdapter
+import android_courses.newsapp.base.BaseActivity
 import android_courses.newsapp.repository.NewsRepository
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_news.*
 
 class NewsFragment : Fragment(R.layout.fragment_news) {
-    lateinit var viewModel: NewsViewModel
-    val newsAdapter: NewsAdapter by lazy {
-        NewsAdapter {
+    private lateinit var buttonSelection: AppCompatImageButton
+    private lateinit var buttonSettings: AppCompatImageButton
+    private lateinit var viewModel: NewsViewModel
+    private val newsAdapter: NewsAdapter by lazy {
+        NewsAdapter ({
             Log.d("ClickOnArticle",
-                "${it.description}") } }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.d(TAG, SelectionFragment.sharedPreferences?.getString(SelectionFragment.KEY_WORD, "пусто").toString())
+                    it.description) },
+                {
+                    Snackbar.make(requireView(),it, Snackbar.LENGTH_SHORT).show()
+                })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,11 +44,21 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         })
 
         viewModel.errorStateLiveData.observe(viewLifecycleOwner, Observer { error ->
-            Log.e("TAG", "An error: $error")})
+            Log.e("TAG", "An error: $error")
+        })
 
         viewModel.loadingMutableLiveData.observe(viewLifecycleOwner, Observer { visibility ->
             pagination_progress_bar.isVisible(visibility)
         })
+
+        buttonSelection = view.findViewById(R.id.img_settingsLine)
+        buttonSettings = view.findViewById(R.id.img_settings)
+        buttonSelection.setOnClickListener {
+            (requireActivity() as BaseActivity).fragmentRouter.openSelectionFragment()
+        }
+        buttonSettings.setOnClickListener {
+            (requireActivity() as BaseActivity).fragmentRouter.openSettingsFragment()
+        }
     }
 
     private fun setupRecyclerView() {
@@ -54,4 +68,3 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         }
     }
 }
-

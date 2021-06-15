@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="#343F67"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.NewsFragment">
 
@@ -33,25 +34,27 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/img_settingsLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="false"
         android:layout_marginStart="16dp"
+        android:background="@android:color/transparent"
         android:src="@drawable/ic_union"
         app:layout_constraintBottom_toTopOf="@id/rv_breaking_news"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/constraint" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/img_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="false"
+        android:background="@android:color/transparent"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
-        android:src="@drawable/ic_component_18"
+        android:src="@drawable/ic_component_17"
         app:layout_constraintBottom_toTopOf="@id/rv_breaking_news"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.947"

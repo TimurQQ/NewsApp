@@ -6,14 +6,30 @@ import android.view.ViewGroup
 import android_courses.newsapp.R
 import android_courses.newsapp.Utill.loadFromUrl
 import android_courses.newsapp.model.Article
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.item_article.view.*
 
-class NewsAdapter(val onClick :(Article) -> Unit) : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
-    inner class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+class NewsAdapter(val onClick: (Article) -> Unit, val onClickDownload: (String) -> Unit) : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
+    private val mAuth: FirebaseAuth by lazy {
+        FirebaseAuth.getInstance()
+    }
+    private val storage = FirebaseStorage.getInstance()
+    private val storageRef = storage.reference
+    private var builder = GsonBuilder().setPrettyPrinting()
+    private var gson = builder.create()
+    inner class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val download_button : AppCompatImageButton by lazy {
+            itemView.findViewById(R.id.imageView)
+        }
+    }
 
     private val differCallback = object : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article) = oldItem.url == newItem.url
@@ -22,7 +38,11 @@ class NewsAdapter(val onClick :(Article) -> Unit) : RecyclerView.Adapter<NewsAda
 
     val differ = AsyncListDiffer(this, differCallback)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ArticleViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_article, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ArticleViewHolder(
+        LayoutInflater.from(
+            parent.context
+        ).inflate(R.layout.item_article, parent, false)
+    )
 
     override fun getItemCount(): Int {
         return differ.currentList.size
@@ -36,6 +56,17 @@ class NewsAdapter(val onClick :(Article) -> Unit) : RecyclerView.Adapter<NewsAda
             tv_description.text = article.description
             setOnClickListener {
                onClick.invoke(article)
+            }
+        }
+        holder.download_button.setOnClickListener {
+            val json: String = gson.toJson(article)
+            val textRef = storageRef.child("/${mAuth.currentUser!!.uid}/${article.title}.txt")
+            val data = json.toByteArray()
+            val uploadTask: UploadTask = textRef.putBytes(data)
+            uploadTask.addOnFailureListener {
+                onClickDownload.invoke("failure :(")
+            }.addOnSuccessListener {
+                onClickDownload.invoke("success :)")
             }
         }
     }

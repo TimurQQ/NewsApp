@@ -61,16 +61,17 @@
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
     </LinearLayout>
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/imageView"
-        android:layout_width="13dp"
-        android:layout_height="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="310dp"
         android:layout_marginTop="165dp"
-        android:src="@drawable/downloadcircularbutton"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/viewimage"
+        android:src="@drawable/ic_cloud_download"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/viewimage" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

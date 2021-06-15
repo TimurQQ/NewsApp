@@ -1,11 +1,8 @@
 package android_courses.newsapp.activity
 
 import android.os.Bundle
-import android_courses.newsapp.*
+import android_courses.newsapp.R
 import android_courses.newsapp.base.BaseActivity
-import android_courses.newsapp.fragments.NewsFragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 
 class MainActivity : BaseActivity(R.id.container){
 
@@ -13,5 +10,12 @@ class MainActivity : BaseActivity(R.id.container){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         fragmentRouter.openSplashFragment()
+    }
+
+    override fun onBackPressed() {
+        when(supportFragmentManager.backStackEntryCount) {
+            0 -> super.onBackPressed()
+            else -> supportFragmentManager.popBackStack()
+        }
     }
 }
