@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 abstract class BaseActivity(private var container: Int) : AppCompatActivity(){
 
-    val fragmentRouter: Router by lazy {
+    val fragmentRouter: FragmentRouter by lazy {
         FragmentRouter(
             container,
             supportFragmentManager

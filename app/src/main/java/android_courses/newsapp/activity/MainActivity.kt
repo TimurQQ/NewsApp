@@ -3,6 +3,7 @@ package android_courses.newsapp.activity
 import android.os.Bundle
 import android.widget.Toast
 import android_courses.newsapp.*
+import android_courses.newsapp.R
 import android_courses.newsapp.base.BaseActivity
 import androidx.lifecycle.Observer
 
@@ -20,5 +21,12 @@ class MainActivity : BaseActivity(R.id.container){
                 Toast.makeText(this@MainActivity, "No Internet Connection. Please check your internet connection", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    override fun onBackPressed() {
+        when(supportFragmentManager.backStackEntryCount) {
+            0 -> super.onBackPressed()
+            else -> supportFragmentManager.popBackStack()
+        }
     }
 }
