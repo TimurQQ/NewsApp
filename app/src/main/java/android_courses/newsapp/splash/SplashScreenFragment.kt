@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android_courses.newsapp.R
-import android_courses.newsapp.activity.MainActivity
 import android_courses.newsapp.base.BaseActivity
 import androidx.fragment.app.Fragment
 import kotlinx.coroutines.*
@@ -14,7 +13,7 @@ import kotlin.coroutines.CoroutineContext
 class SplashScreenFragment : Fragment(), CoroutineScope {
 
     companion object {
-        private const val TIME : Long = 2000
+        private const val TIME: Long = 2000
     }
 
     override val coroutineContext: CoroutineContext
@@ -28,7 +27,7 @@ class SplashScreenFragment : Fragment(), CoroutineScope {
         super.onViewCreated(view, savedInstanceState)
         launch {
             delay(TIME)
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 (requireActivity() as BaseActivity).fragmentRouter.openLogInFragment()
             }
         }
