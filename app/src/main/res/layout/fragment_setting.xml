@@ -6,68 +6,98 @@
     android:layout_height="match_parent"
     tools:context=".fragments.Fragment_setting">
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="59dp"
-        android:layout_height="41dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="340dp"
-        android:background="@color/white"
-        android:src="?attr/actionModeCloseDrawable" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="41dp"
-        android:background="#343F67"
-        android:text="Log out"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="351dp"
-        android:layout_height="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="29dp"
-        android:background="#343F67">
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="153dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="24dp"
-            android:text="Light/Dark"
-            android:textColor="@android:color/white"
-            android:textSize="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+
+        <ImageButton
+            android:clickable="true"
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            android:src="?attr/actionModeCloseDrawable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.073"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.627" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Switch
-            android:id="@+id/switch1"
-            android:textColorHint="@color/white"
-            android:layout_width="65dp"
-            android:layout_height="34dp"
-            android:layout_marginEnd="16dp"
+
+        <androidx.appcompat.widget.AppCompatButton
+
+            android:background="@drawable/style_theames"
+            android:id="@+id/button3"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="56dp"
             android:textColor="@color/white"
+            android:text="Log out"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.609" />
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/style_theames"
+            android:backgroundTint="#343F67"
+            android:id="@+id/constraintLayout"
+            android:layout_width="351dp"
+            android:layout_height="75dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="68dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="24dp"
+                android:text="Light/Dark"
+                android:textColor="@android:color/white"
+                android:textSize="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.627" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:theme="@style/MySwitch"
+                android:id="@+id/switch_compat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:checked="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

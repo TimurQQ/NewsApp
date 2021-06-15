@@ -18,6 +18,16 @@
         <item name="cornerSize">15dp</item>
     </style>
 
+    <!--SwitchCompat-->
+        <style name="MySwitch" parent="Theme.AppCompat.Light">
+            <!--активное состояние-->
+            <item name="colorControlActivated">@android:color/black</item>
+            <!-- цвет дорожки-->
+           <item name="trackTint">@android:color/white</item>
+            <!-- неактивное состояние ползунка -->
+            <item name="colorSwitchThumbNormal">@android:color/black</item>
+
+        </style>
 
 
 </resources>
