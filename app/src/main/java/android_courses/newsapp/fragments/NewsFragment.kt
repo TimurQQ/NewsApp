@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_news.*
 
 class NewsFragment : Fragment(R.layout.fragment_news) {
@@ -22,9 +23,13 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private lateinit var buttonSettings: AppCompatImageButton
     private lateinit var viewModel: NewsViewModel
     private val newsAdapter: NewsAdapter by lazy {
-        NewsAdapter {
+        NewsAdapter ({
             Log.d("ClickOnArticle",
-                    it.description) } }
+                    it.description) },
+                {
+                    Snackbar.make(requireView(),it, Snackbar.LENGTH_SHORT).show()
+                })
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
