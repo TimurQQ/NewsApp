@@ -7,7 +7,4 @@
     <dimen name="dimens_20sp">20sp</dimen>
     <dimen name="height_email">40dp</dimen>
     <dimen name="height_button">38dp</dimen>
-
-
-
 </resources>

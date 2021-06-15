@@ -99,5 +99,4 @@
             android:visibility="gone" />
 
     </RelativeLayout>
-
 </LinearLayout>

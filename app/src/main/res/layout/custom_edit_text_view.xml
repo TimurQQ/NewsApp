@@ -18,5 +18,4 @@
         android:layout_margin="@dimen/dimenes_20dp"
         android:paddingBottom="@dimen/dimenes_20dp"/>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

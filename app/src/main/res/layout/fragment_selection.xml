@@ -52,5 +52,4 @@
             android:layout_height="wrap_content"
             app:editHint="content search" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
