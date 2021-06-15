@@ -13,12 +13,9 @@ class MainActivity : BaseActivity(R.id.container){
     }
 
     override fun onBackPressed() {
-        val count = supportFragmentManager.backStackEntryCount
-        if (count == 0) {
-            super.onBackPressed()
-            //additional code
-        } else {
-            supportFragmentManager.popBackStack()
+        when(supportFragmentManager.backStackEntryCount) {
+            0 -> super.onBackPressed()
+            else -> supportFragmentManager.popBackStack()
         }
     }
 }
