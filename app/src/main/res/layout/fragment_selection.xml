@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageButton
+        android:id="@+id/img_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_back_button"
+        app:layout_constraintBottom_toTopOf="@+id/selection"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimenes_550dp"
+        android:text="@string/selection"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/dimens_20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/selection"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/dimenes_20dp"
+        android:background="@drawable/tv_style_with_dark_background"
+        android:orientation="vertical">
+
+        <android_courses.newsapp.custom.CustomEditTextView
+            android:id="@+id/search_by_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:editHint="search by title" />
+
+        <android_courses.newsapp.custom.CustomEditTextView
+            android:id="@+id/content_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:editHint="content search" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
