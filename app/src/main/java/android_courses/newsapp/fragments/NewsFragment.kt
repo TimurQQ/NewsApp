@@ -1,5 +1,6 @@
 package android_courses.newsapp.fragments
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -21,6 +22,11 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         NewsAdapter {
             Log.d("ClickOnArticle",
                 "${it.description}") } }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d(TAG, SelectionFragment.sharedPreferences?.getString(SelectionFragment.KEY_WORD, "пусто").toString())
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -31,13 +32,38 @@
             android:id="@+id/search_by_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:editHint="search by title" />
+            app:editHint="search by title" >
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/search_by_title_button"
+                android:layout_width="@dimen/dimens_50dp"
+                android:layout_height="@dimen/dimens_50dp"
+                android:src="@drawable/ic_baseline_youtube_searched_for_24"
+                app:layout_constraintStart_toStartOf="@id/search_by_title"
+                app:layout_constraintBottom_toBottomOf="@id/search_by_title"
+                app:layout_constraintTop_toTopOf="@id/search_by_title"
+                android:layout_marginStart="@dimen/dimenes_20dp"
+                android:background="@color/fui_transparent"/>
+        </android_courses.newsapp.custom.CustomEditTextView>
 
         <android_courses.newsapp.custom.CustomEditTextView
             android:id="@+id/content_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:editHint="content search" />
+            app:editHint="content search" >
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/content_search_button"
+                android:layout_width="@dimen/dimens_50dp"
+                android:layout_height="@dimen/dimens_50dp"
+                android:layout_marginStart="@dimen/dimenes_20dp"
+                android:src="@drawable/ic_baseline_youtube_searched_for_24"
+                app:layout_constraintBottom_toBottomOf="@id/content_search"
+                app:layout_constraintStart_toStartOf="@id/content_search"
+                app:layout_constraintTop_toTopOf="@id/content_search"
+                android:background="@color/fui_transparent"/>
+        </android_courses.newsapp.custom.CustomEditTextView>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
