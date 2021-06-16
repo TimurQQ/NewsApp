@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
-import android_courses.newsapp.NewsViewModel
 import android_courses.newsapp.R
 import android_courses.newsapp.base.BaseActivity
 import android_courses.newsapp.custom.CustomEditTextView
