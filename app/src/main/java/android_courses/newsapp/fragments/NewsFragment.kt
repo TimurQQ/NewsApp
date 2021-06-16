@@ -61,6 +61,12 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+            SelectionFragment.sharedPreferences?.getString(SelectionFragment.KEY_WORD, "eror")
+                    ?.let { viewModel.getNewsByKeyWord(it) }
+    }
+
     private fun setupRecyclerView() {
         rv_breaking_news.apply {
             adapter = newsAdapter
