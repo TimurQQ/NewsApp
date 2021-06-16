@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
 
@@ -20,6 +21,19 @@ class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
     fun getBreakingNews(countryCode: String) = viewModelScope.launch {
         loadingMutableLiveData.postValue(true)
         val response = newsRepository.getBreakingNews(countryCode)
+
+        loadingMutableLiveData.postValue(false)
+        val body = response.body()
+        if (!response.isSuccessful) {
+            errorStateLiveData.postValue("Error")
+            return@launch
+        }
+        breakingNewsListLiveData.postValue(body)
+    }
+
+    fun getNewsByKeyWord(keyWord: String) = viewModelScope.launch {
+        loadingMutableLiveData.postValue(true)
+        val response = newsRepository.getNewsByKeyWord(keyWord)
 
         loadingMutableLiveData.postValue(false)
         val body = response.body()

@@ -1,5 +1,6 @@
 package android_courses.newsapp.presentation.fragments
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -58,6 +59,12 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         buttonSettings.setOnClickListener {
             (requireActivity() as BaseActivity).fragmentRouter.openSettingsFragment()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+            SelectionFragment.sharedPreferences?.getString(SelectionFragment.KEY_WORD, "eror")
+                    ?.let { viewModel.getNewsByKeyWord(it) }
     }
 
     private fun setupRecyclerView() {
