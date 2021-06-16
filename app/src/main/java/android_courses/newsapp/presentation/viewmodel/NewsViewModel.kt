@@ -1,5 +1,7 @@
-package android_courses.newsapp
+package android_courses.newsapp.presentation.viewmodel
 
+import android_courses.newsapp.domain.entity.NewsResponse
+import android_courses.newsapp.data.db.repository.NewsRepository
 import android_courses.newsapp.fragments.SelectionFragment
 import android_courses.newsapp.model.NewsResponse
 import android_courses.newsapp.network.RetrofitInstance

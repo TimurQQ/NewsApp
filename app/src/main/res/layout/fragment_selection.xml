@@ -60,5 +60,4 @@
         </android_courses.newsapp.custom.CustomEditTextView>
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

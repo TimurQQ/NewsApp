@@ -1,8 +1,8 @@
-package android_courses.newsapp.network
+package android_courses.newsapp.data.db.remote.api
 
 import android_courses.newsapp.Utill.Constants
 import android_courses.newsapp.Utill.Constants.Companion.API_KEY
-import android_courses.newsapp.model.NewsResponse
+import android_courses.newsapp.domain.entity.NewsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

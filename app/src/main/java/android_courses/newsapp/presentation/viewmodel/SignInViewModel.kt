@@ -1,40 +1,50 @@
-package android_courses.newsapp
+package android_courses.newsapp.presentation.viewmodel
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Patterns
 import android.view.View
 import android.widget.*
+import android_courses.newsapp.R
 import android_courses.newsapp.Utill.Constants
 import android_courses.newsapp.Utill.Constants.Companion.IS_REGISTERED
 import android_courses.newsapp.base.BaseActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
 
-class SignUpViewModel(private val context: Context) : View.OnClickListener{
-    private val mSettings: SharedPreferences by lazy {
-        context.getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE)
-    }
+class SignInViewModel(private val context: Context) : View.OnClickListener{
     private val mAuth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
-    private lateinit var progressBar: ProgressBar
+    private val mSettings: SharedPreferences by lazy {
+        context.getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE)
+    }
     private lateinit var editTextEmail: EditText
     private lateinit var editTextPassword: EditText
-    private lateinit var buttonSignUp: Button
-    private lateinit var textViewLogin: TextView
+    private lateinit var progressBar: ProgressBar
+    private lateinit var textViewSignUp: TextView
+    private lateinit var buttonLogin: Button
 
     fun onViewCreated(view: View) {
         editTextEmail = view.findViewById(R.id.editTextEmail)
         editTextPassword = view.findViewById(R.id.editTextPassword)
         progressBar = view.findViewById(R.id.progressbar)
-        buttonSignUp = view.findViewById(R.id.buttonSignUp)
-        textViewLogin = view.findViewById(R.id.textViewLogin)
-        buttonSignUp.setOnClickListener(this)
-        textViewLogin.setOnClickListener(this)
+        textViewSignUp = view.findViewById(R.id.textViewSignup)
+        buttonLogin = view.findViewById(R.id.buttonLogin)
+        textViewSignUp.setOnClickListener(this)
+        buttonLogin.setOnClickListener(this)
     }
 
-    private fun registerUser() {
+    fun onStart() {
+        if (mAuth.currentUser != null) {
+            with (mSettings.edit()) {
+                putBoolean(IS_REGISTERED, true)
+                apply()
+            }
+            (context as BaseActivity).fragmentRouter.openNewsFragment()
+        }
+    }
+
+    private fun userLogin() {
         val email = editTextEmail.text.toString().trim { it <= ' ' }
         val password: String = editTextPassword.text.toString().trim { it <= ' ' }
         if (email.isEmpty()) {
@@ -58,22 +68,15 @@ class SignUpViewModel(private val context: Context) : View.OnClickListener{
             return
         }
         progressBar.visibility = View.VISIBLE
-        mAuth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                progressBar.visibility = View.GONE
-                if (task.isSuccessful) {
-                    with (mSettings.edit()) {
-                        putBoolean(IS_REGISTERED, true)
-                        apply()
-                    }
-                    (context as BaseActivity).fragmentRouter.openNewsFragment()
-                } else {
-                    if (task.exception is FirebaseAuthUserCollisionException) {
-                        Toast.makeText(
-                                context,
-                                "You are already registered",
-                                Toast.LENGTH_SHORT
-                        ).show()
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    progressBar.visibility = View.GONE
+                    if (task.isSuccessful) {
+                        with (mSettings.edit()) {
+                            putBoolean(android_courses.newsapp.Utill.Constants.IS_REGISTERED, true)
+                            apply()
+                        }
+                        (context as BaseActivity).fragmentRouter.openNewsFragment()
                     } else {
                         Toast.makeText(
                                 context,
@@ -82,15 +85,14 @@ class SignUpViewModel(private val context: Context) : View.OnClickListener{
                         ).show()
                     }
                 }
-            }
     }
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.buttonSignUp -> registerUser()
-            R.id.textViewLogin -> {
-                (context as BaseActivity).supportFragmentManager.popBackStack()
+            R.id.textViewSignup -> {
+                (context as BaseActivity).fragmentRouter.openSignUpFragment()
             }
+            R.id.buttonLogin -> userLogin()
         }
     }
 }

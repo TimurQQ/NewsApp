@@ -6,4 +6,6 @@
     <dimen name="dimenes_550dp">550dp</dimen>
     <dimen name="dimens_20sp">20sp</dimen>
     <dimen name="dimens_50dp">50dp</dimen>
+    <dimen name="height_email">40dp</dimen>
+    <dimen name="height_button">38dp</dimen>
 </resources>

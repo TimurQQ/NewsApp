@@ -1,4 +1,4 @@
-package android_courses.newsapp.network
+package android_courses.newsapp.data.db.remote.api
 
 import android_courses.newsapp.Utill.Constants.Companion.BASE_URL
 import okhttp3.OkHttpClient

@@ -1,16 +1,16 @@
-package android_courses.newsapp.fragments
+package android_courses.newsapp.presentation.fragments
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android_courses.newsapp.NewsViewModel
-import android_courses.newsapp.NewsViewModelProviderFactory
+import android_courses.newsapp.presentation.viewmodel.NewsViewModel
+import android_courses.newsapp.presentation.NewsViewModelProviderFactory
 import android_courses.newsapp.R
 import android_courses.newsapp.Utill.isVisible
-import android_courses.newsapp.adapter.NewsAdapter
 import android_courses.newsapp.base.BaseActivity
-import android_courses.newsapp.repository.NewsRepository
+import android_courses.newsapp.data.db.repository.NewsRepository
+import android_courses.newsapp.presentation.adapter.NewsAdapter
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
