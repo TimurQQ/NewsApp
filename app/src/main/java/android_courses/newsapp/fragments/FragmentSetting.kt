@@ -10,12 +10,17 @@ import android.view.ViewGroup
 import android_courses.newsapp.R
 import android_courses.newsapp.Utill.Constants.Companion.APP_PREFERENCES
 import android_courses.newsapp.Utill.Constants.Companion.IS_REGISTERED
+import android_courses.newsapp.Utill.SaveData
 import android_courses.newsapp.base.BaseActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageButton
+import androidx.appcompat.widget.SwitchCompat
 import com.google.firebase.auth.FirebaseAuth
 
 class FragmentSetting : Fragment() {
+    private val saveData: SaveData?=null
+
+ private lateinit var switchCompat: SwitchCompat
     private val mAuth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
@@ -24,18 +29,31 @@ class FragmentSetting : Fragment() {
     }
     private lateinit var backButton: AppCompatImageButton
     private lateinit var buttonLogout: AppCompatButton
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_setting, container, false)
+
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
         super.onViewCreated(view, savedInstanceState)
+        switchCompat=view.findViewById(R.id.on_off)
+        switchCompat.setOnCheckedChangeListener {_, isChecked ->
+            saveData?.setLightModeState(isChecked)
+
+        }
+
         buttonLogout = view.findViewById(R.id.button_log_out)
-        backButton = view.findViewById(R.id.imageButton2)
+        backButton = view.findViewById(R.id.jump)
         buttonLogout.setOnClickListener {
             mAuth.signOut()
             with (mSettings.edit()) {
@@ -48,4 +66,6 @@ class FragmentSetting : Fragment() {
             requireActivity().supportFragmentManager.popBackStack()
         }
     }
+
+
 }

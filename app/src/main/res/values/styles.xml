@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Costomize your theme here  -->
+        <item name="colorPrimary">@color/dark_background</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/white</item>
+
+        <!-- Mainhomepage default Theme AppTheme -->
+        <item name="backgroundColor">@color/dark_background</item>
+        <item name="card_background">@color/dark_background</item>
+        <item name="Text_Color">@color/dark_background</item>
+        <item name="Button_Color">@color/white</item>
+
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+
+    </style>
+
+    <style name="darkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Costomize your theme here  -->
+        <item name="colorPrimary">@color/dark_background</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/white</item>
+
+        <!-- Mainhomepage default Theme LightTheme on Switch click -->
+        <item name="backgroundColor">@color/white</item>
+        <item name="card_background">@color/white</item>
+        <item name="Text_Color">@color/white</item>
+        <item name="Button_Color">@color/dark_background</item>
+
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+
+    </style>
+<!--This is use for smooth reset activity on switch click on off   -->
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+
+</resources>
