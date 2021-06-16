@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="CustomEditTextView">
         <attr name="editHint" format="string"/>
+        <attr name="getText" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="al">
