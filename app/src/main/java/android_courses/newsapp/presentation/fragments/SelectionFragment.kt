@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import android_courses.newsapp.R
 import android_courses.newsapp.base.BaseActivity
 import android_courses.newsapp.custom.CustomEditTextView
@@ -17,7 +18,7 @@ class SelectionFragment : Fragment(R.layout.fragment_selection) {
         var KEY : String? = null
         var KEY_WORD : String? = null
     }
-
+    lateinit var backButton: ImageButton
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -28,6 +29,10 @@ class SelectionFragment : Fragment(R.layout.fragment_selection) {
             editor?.putString(KEY_WORD, view.findViewById<CustomEditTextView>(R.id.search_by_title).text)
             editor?.apply()
             (requireActivity() as BaseActivity).fragmentRouter.openNewsFragment()
+        }
+        backButton = view.findViewById(R.id.img_back_button)
+        backButton.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
         }
     }
 }
