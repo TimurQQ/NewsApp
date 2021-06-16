@@ -29,7 +29,6 @@ class MainActivity : BaseActivity(R.id.container) {
             switchCompat!!.isChecked = true
         }
 
-
         fragmentRouter.openSplashFragment()
     }
 
