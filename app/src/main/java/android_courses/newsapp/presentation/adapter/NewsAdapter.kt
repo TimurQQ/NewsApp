@@ -3,6 +3,7 @@ package android_courses.newsapp.presentation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android_courses.newsapp.R
 import android_courses.newsapp.Utill.loadFromUrl
 import android_courses.newsapp.domain.entity.Article
@@ -26,7 +27,7 @@ class NewsAdapter(val onClick: (Article) -> Unit, val onClickDownload: (String) 
     private var gson = builder.create()
     inner class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val download_button : AppCompatImageButton by lazy {
-            itemView.findViewById(R.id.imageView)
+            itemView.findViewById<AppCompatImageButton>(R.id.imageView)
         }
     }
 
