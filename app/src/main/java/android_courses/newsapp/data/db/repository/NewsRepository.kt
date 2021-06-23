@@ -8,4 +8,8 @@ class NewsRepository : Repository {
     override suspend fun getBreakingNews(countryCode: String): Response<NewsResponse> {
         return RetrofitInstance.api.getNews(countryCode)
     }
+
+    override suspend fun getNewsByKeyWord(keyWord: String): Response<NewsResponse> {
+        return RetrofitInstance.api.getNewsByKeyWord(keyWord = keyWord)
+    }
 }
