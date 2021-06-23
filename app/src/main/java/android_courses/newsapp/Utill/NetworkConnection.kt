@@ -16,7 +16,7 @@ class NetworkConnection(private val context: Context) : LiveData<Boolean>() {
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     private lateinit var networkCallback: ConnectivityManager.NetworkCallback
 
-    /*override fun onActive() {
+    override fun onActive() {
         super.onActive()
         updateConnection()
         when {
@@ -84,5 +84,5 @@ class NetworkConnection(private val context: Context) : LiveData<Boolean>() {
     fun updateConnection() {
         val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
         postValue(activeNetwork?.isConnected == true)
-    }*/
+    }
     }
