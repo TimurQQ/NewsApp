@@ -3,8 +3,8 @@ package android_courses.newsapp.presentation
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android_courses.newsapp.base.BaseActivity
 import android.widget.Toast
+import android_courses.newsapp.*
 import android_courses.newsapp.R
 import android_courses.newsapp.Utill.NetworkConnection
 import android_courses.newsapp.Utill.SaveData
@@ -17,11 +17,6 @@ class MainActivity : BaseActivity(R.id.container),RestartInterface {
 
     private var switchCompat: SwitchCompat? = null
     private lateinit var saveData: SaveData
-
-
-
-class MainActivity : BaseActivity(R.id.container){
-    private lateinit var networkConnection: NetworkConnection
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,24 +40,16 @@ class MainActivity : BaseActivity(R.id.container){
 
 
         fragmentRouter.openSplashFragment()
-        neworkConnection()
-    }
-
-    fun neworkConnection() {
-        networkConnection = NetworkConnection(application)
-        networkConnection.observe(this, { isConnected ->
+        val networkConnection = NetworkConnection(applicationContext)
+        networkConnection.observe(this, Observer { isConnected ->
             if (isConnected) {
-                Toast.makeText(this, "Соединение есть", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@MainActivity, "Соединение есть", Toast.LENGTH_SHORT).show()
             } else {
-
                 Toast.makeText(
                     this@MainActivity,
                     "No Internet Connection. Please check your internet connection",
                     Toast.LENGTH_SHORT
                 ).show()
-
-                Toast.makeText(this, "No Internet Connection. Please check your internet connection", Toast.LENGTH_SHORT).show()
-
             }
         })
 
@@ -75,14 +62,12 @@ class MainActivity : BaseActivity(R.id.container){
             else -> supportFragmentManager.popBackStack()
         }
     }
-
     override fun restartApplication() {
         val i =Intent(applicationContext,MainActivity::class.java)
         startActivity(i)
         finish()
 
     }
-
 
 
 }
