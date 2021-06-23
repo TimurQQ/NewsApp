@@ -8,4 +8,5 @@
     <dimen name="dimens_50dp">50dp</dimen>
     <dimen name="height_email">40dp</dimen>
     <dimen name="height_button">38dp</dimen>
+    <dimen name="dimens_40dp">40dp</dimen>
 </resources>
