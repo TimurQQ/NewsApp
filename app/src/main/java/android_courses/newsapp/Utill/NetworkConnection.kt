@@ -2,13 +2,13 @@
 
 package android_courses.newsapp.Utill
 
-import android.annotation.TargetApi
-import android.content.BroadcastReceiver
+import android.app.Application
 import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
-import android.net.*
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkRequest
 import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 
 class NetworkConnection(private val context: Context) : LiveData<Boolean>() {
@@ -16,7 +16,7 @@ class NetworkConnection(private val context: Context) : LiveData<Boolean>() {
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     private lateinit var networkCallback: ConnectivityManager.NetworkCallback
 
-    override fun onActive() {
+    /*override fun onActive() {
         super.onActive()
         updateConnection()
         when {
@@ -84,5 +84,5 @@ class NetworkConnection(private val context: Context) : LiveData<Boolean>() {
     fun updateConnection() {
         val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
         postValue(activeNetwork?.isConnected == true)
-    }
+    }*/
     }
