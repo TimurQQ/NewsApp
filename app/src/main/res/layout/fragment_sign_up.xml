@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#343F67"
-    tools:context="android_courses.newsapp.activity.MainActivity"
+    tools:context="android_courses.newsapp.presentation.MainActivity"
     android:tag="fragment_sing_up">
 
     <RelativeLayout
@@ -44,27 +44,25 @@
             <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/height_email"
                 android:background="@drawable/rounded_edit_text"
                 android:fontFamily="sans-serif"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:paddingBottom="15dp"
                 android:textColorHint="#AEABAB"
                 tools:ignore="HardcodedText" />
 
             <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/height_email"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/rounded_edit_text"
                 android:fontFamily="sans-serif"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:paddingBottom="15dp"
                 android:textColorHint="#AEABAB"
                 tools:ignore="HardcodedText" />
 
@@ -82,7 +80,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonSignUp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/height_button"
                 android:layout_gravity="center"
                 android:layout_margin="7dp"
                 android:background="@drawable/rounded_edit_text"
@@ -101,5 +99,4 @@
             android:visibility="gone" />
 
     </RelativeLayout>
-
 </LinearLayout>

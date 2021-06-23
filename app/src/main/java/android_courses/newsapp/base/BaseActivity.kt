@@ -11,4 +11,3 @@ abstract class BaseActivity(private var container: Int) : AppCompatActivity(){
         )
     }
 }
-
