@@ -2,35 +2,31 @@ package android_courses.newsapp.presentation
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import android_courses.newsapp.*
-import android_courses.newsapp.R
 import android_courses.newsapp.Utill.NetworkConnection
 import android_courses.newsapp.Utill.SaveData
 import android_courses.newsapp.base.BaseActivity
-import androidx.appcompat.widget.SwitchCompat
 import android_courses.newsapp.base.RestartInterface
-import androidx.lifecycle.Observer
+import androidx.appcompat.widget.SwitchCompat
 
-class MainActivity : BaseActivity(R.id.container),RestartInterface {
+class MainActivity : BaseActivity(R.id.container), RestartInterface {
 
     private var switchCompat: SwitchCompat? = null
     private lateinit var saveData: SaveData
 
+    private lateinit var networkConnection: NetworkConnection
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //Share preference states look
-        saveData= SaveData(this)
-        if (saveData.loadLightModeState()==true){
+        saveData = SaveData(this)
+        if (saveData.loadLightModeState() == true) {
             setTheme(R.style.darkTheme)
-        }else
+        } else
             setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-
+        neworkConnection()
 
         //Switch for on off
         switchCompat = findViewById(R.id.on_off) as SwitchCompat?
@@ -38,15 +34,16 @@ class MainActivity : BaseActivity(R.id.container),RestartInterface {
             switchCompat?.isChecked = true
         }
 
-
         fragmentRouter.openSplashFragment()
-        val networkConnection = NetworkConnection(applicationContext)
-        networkConnection.observe(this, Observer { isConnected ->
+    }
+    fun neworkConnection() {
+        networkConnection = NetworkConnection(application)
+        networkConnection.observe(this, { isConnected ->
             if (isConnected) {
-//                Toast.makeText(this@MainActivity, "Соединение есть", Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this, "Соединение есть", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(
-                    this@MainActivity,
+                    this,
                     "No Internet Connection. Please check your internet connection",
                     Toast.LENGTH_SHORT
                 ).show()
@@ -54,8 +51,6 @@ class MainActivity : BaseActivity(R.id.container),RestartInterface {
         })
 
     }
-
-
     override fun onBackPressed() {
         when (supportFragmentManager.backStackEntryCount) {
             0 -> super.onBackPressed()
@@ -63,11 +58,12 @@ class MainActivity : BaseActivity(R.id.container),RestartInterface {
         }
     }
     override fun restartApplication() {
-        val i =Intent(applicationContext,MainActivity::class.java)
+        val i = Intent(applicationContext, MainActivity::class.java)
         startActivity(i)
         finish()
 
     }
-
-
 }
+
+
+
