@@ -2,15 +2,12 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
     <!-- Costomize your theme here  -->
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorAccent">@color/white</item>
 
         <!-- Mainhomepage default Theme AppTheme -->
-        <item name="backgroundColor">@color/white</item>
+        <item name="backgroundColor">@color/dark_background</item>
         <item name="card_background">@color/white</item>
         <item name="Text_Color">@color/white</item>
-        <item name="Button_Color">@color/white</item>
+        <item name="Button_Color">@color/dark_background</item>
 
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
 
@@ -18,13 +15,11 @@
 
     <style name="darkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Costomize your theme here  -->
-        <item name="colorPrimary">@color/dark_background</item>
-        <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/white</item>
+       >
 
         <!-- Mainhomepage default Theme LightTheme on Switch click -->
         <item name="backgroundColor">@color/white</item>
-        <item name="card_background">@color/white</item>
+        <item name="card_background">@color/dark_background</item>
         <item name="Text_Color">@color/white</item>
         <item name="Button_Color">@color/dark_background</item>
 
