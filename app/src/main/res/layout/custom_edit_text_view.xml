@@ -12,10 +12,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:hint="123"
         android:background="@drawable/tv_style"
         android:ellipsize="start"
-        android:gravity="center"
-        android:layout_margin="@dimen/dimenes_20dp" />
+        android:gravity="center"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/search_by_title_img"
+        android:layout_width="@dimen/dimens_40dp"
+        android:layout_height="@dimen/dimens_40dp"
+
+        app:layout_constraintStart_toStartOf="@id/custom_edit_text_view"
+        app:layout_constraintBottom_toBottomOf="@id/custom_edit_text_view"
+        app:layout_constraintTop_toTopOf="@id/custom_edit_text_view"
+        android:layout_marginStart="@dimen/dimenes_15dp"
+        android:background="@color/fui_transparent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

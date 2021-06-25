@@ -8,7 +8,9 @@ import android.widget.*
 import android_courses.newsapp.R
 import android_courses.newsapp.Utill.Constants
 import android_courses.newsapp.Utill.Constants.Companion.IS_REGISTERED
+import android_courses.newsapp.Utill.isVisible
 import android_courses.newsapp.base.BaseActivity
+import androidx.appcompat.widget.AppCompatImageView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 
@@ -33,6 +35,9 @@ class SignUpViewModel(private val context: Context) : View.OnClickListener{
         textViewLogin = view.findViewById(R.id.textViewLogin)
         buttonSignUp.setOnClickListener(this)
         textViewLogin.setOnClickListener(this)
+
+        editTextEmail.findViewById<AppCompatImageView>(R.id.search_by_title_img).isVisible(false)
+        editTextPassword.findViewById<AppCompatImageView>(R.id.search_by_title_img).isVisible(false)
     }
 
     private fun registerUser() {

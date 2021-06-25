@@ -8,7 +8,7 @@ import android.widget.ImageButton
 import android_courses.newsapp.R
 import android_courses.newsapp.base.BaseActivity
 import android_courses.newsapp.custom.CustomEditTextView
-import androidx.appcompat.widget.AppCompatImageButton
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 
 class SelectionFragment : Fragment(R.layout.fragment_selection) {
@@ -25,11 +25,14 @@ class SelectionFragment : Fragment(R.layout.fragment_selection) {
         sharedPreferences = context?.getSharedPreferences(KEY, Context.MODE_PRIVATE)
         val editor : SharedPreferences.Editor? = sharedPreferences?.edit()
 
-        view.findViewById<AppCompatImageButton>(R.id.search_by_title_button).setOnClickListener {
-            editor?.putString(KEY_WORD, view.findViewById<CustomEditTextView>(R.id.search_by_title).text)
-            editor?.apply()
-            (requireActivity() as BaseActivity).fragmentRouter.openNewsFragment()
+        view.findViewById<CustomEditTextView>(R.id.search_by_title).setActionOnClick {
+            view.findViewById<AppCompatImageView>(R.id.search_by_title_img).setOnClickListener {
+                editor?.putString(KEY_WORD, view.findViewById<CustomEditTextView>(R.id.search_by_title).text)
+                editor?.apply()
+                (requireActivity() as BaseActivity).fragmentRouter.openNewsFragment()
+            }
         }
+
         backButton = view.findViewById(R.id.img_back_button)
         backButton.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
