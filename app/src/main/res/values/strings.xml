@@ -17,4 +17,11 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="selection">Selection</string>
+<!--NoteDown this Strings  -->
+    <string name="Setting">Setting</string>
+    <string name="Dark">Dark Mode</string>
+    <string name="Launch">Launch Second activity</string>
+    <string name="Second_Activity">Welcom toactivity 2</string>
+    <string name="Text1">Welcom on DarkMode</string>
+    <string name="Text2">Have a look of this application designed\n for you the dark mode on one click by you</string>
 </resources>

@@ -1,96 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#343F67"
-    tools:context="android_courses.newsapp.presentation.MainActivity"
-    android:tag="fragment_sign_in">
+    android:scrollbarStyle="outsideOverlay"
+    android:fillViewport="true"
+    android:isScrollContainer="true"
+    android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#343F67"
+        android:orientation="vertical"
+        android:tag="fragment_sign_in"
+        tools:context="android_courses.newsapp.presentation.MainActivity">
+
+        <Space
+            android:id="@+id/space_0"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/news_logo"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/news_logo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_news" />
+        <ImageView
+            android:id="@+id/news_logo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_news"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/space_0"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.8" />
 
-            <android_courses.newsapp.custom.CustomEditTextView
-                android:id="@+id/editTextEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="75dp"
-                android:background="@drawable/rounded_edit_text"
-                android:fontFamily="sans-serif"
-                app:editHint="Login (only email)"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:inputType="textEmailAddress"
-                android:textColorHint="#AEABAB"
-                tools:ignore="HardcodedText"
-                android:layout_marginStart="@dimen/dimenes_20dp"
-                android:layout_marginEnd="@dimen/dimenes_20dp">
-            </android_courses.newsapp.custom.CustomEditTextView>
+        <Space
+            android:id="@+id/space"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/news_logo" />
 
-            <android_courses.newsapp.custom.CustomEditTextView
-                android:id="@+id/editTextPassword"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/height_email"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/rounded_edit_text"
-                android:fontFamily="sans-serif"
-                android:gravity="center"
-                app:editHint="Password"
-                android:inputType="textPassword"
-                android:textColorHint="#AEABAB"
-                tools:ignore="HardcodedText"
-                android:layout_margin="@dimen/dimenes_20dp">
-            </android_courses.newsapp.custom.CustomEditTextView>
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_email"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_edit_text"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:hint="Login (only email)"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#AEABAB"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/space"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.8"
+            tools:ignore="HardcodedText" />
 
-            <TextView
-                android:id="@+id/textViewSignup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:text="Don't have account? Sign Up"
-                android:textAlignment="center"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:textColor="#AEABAB"
-                tools:ignore="HardcodedText" />
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_email"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/rounded_edit_text"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColorHint="#AEABAB"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.8"
+            tools:ignore="HardcodedText" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/height_button"
-                android:layout_gravity="center"
-                android:layout_margin="7dp"
-                android:background="@drawable/rounded_edit_text"
-                android:text="Login"
-                android:textAllCaps="false"
-                android:textColor="#000000"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/textViewSignup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="Don't have account? Sign Up"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="#AEABAB"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextPassword"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.8"
+            tools:ignore="HardcodedText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_button"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
+            android:layout_marginEnd="92dp"
+            android:background="@drawable/rounded_edit_text"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewSignup"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.8"
+            tools:ignore="HardcodedText" />
 
         <ProgressBar
             android:id="@+id/progressbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

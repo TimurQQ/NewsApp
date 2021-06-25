@@ -10,4 +10,7 @@
     <color name="grey_description">#6F6A6A</color>
     <color name="dark_background">#343F67</color>
     <color name="newsWhite">#FFFFFF</color>
+    <color name="color_for_progress_bar">#4682B4</color>
+    <color name="transparent">#00000000</color>
+    <color name="background_color">#343F67</color>
 </resources>
