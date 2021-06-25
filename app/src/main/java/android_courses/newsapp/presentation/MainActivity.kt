@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import android_courses.newsapp.*
-import android_courses.newsapp.Utill.NetworkConnection
+import android_courses.newsapp.NetworkConnection
 import android_courses.newsapp.Utill.SaveData
 import android_courses.newsapp.base.BaseActivity
 import android_courses.newsapp.base.RestartInterface
