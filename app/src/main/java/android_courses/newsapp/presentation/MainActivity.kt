@@ -49,7 +49,6 @@ class MainActivity : BaseActivity(R.id.container), RestartInterface {
                 ).show()
             }
         })
-
     }
     override fun onBackPressed() {
         when (supportFragmentManager.backStackEntryCount) {
