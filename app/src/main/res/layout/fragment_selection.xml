@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_background"
+    android:backgroundTint="?attr/card_background"
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageButton
@@ -12,8 +14,8 @@
         android:layout_alignParentEnd="false"
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/dimenes_20dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_back_button"
+        android:background="@drawable/style_theames"
+        android:src="?attr/actionModeCloseDrawable"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,6 +43,7 @@
         android:orientation="vertical">
 
         <android_courses.newsapp.custom.CustomEditTextView
+            android:backgroundTint="?attr/backgroundColor"
             android:id="@+id/search_by_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

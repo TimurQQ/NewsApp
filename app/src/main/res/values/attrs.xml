@@ -4,4 +4,12 @@
         <attr name="editHint" format="string"/>
         <attr name="getText" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="al">
+        <attr name="backgroundColor" format="color"/>
+        <attr name="card_background" format="color"/>
+        <attr name="Text_Color" format="color"/>
+        <attr name="Button_Color" format="color"/>
+
+    </declare-styleable>
     </resources>
