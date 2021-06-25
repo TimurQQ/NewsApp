@@ -24,7 +24,7 @@
         android:id="@+id/selection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dimenes_550dp"
+        android:layout_marginBottom="@dimen/dimens_550dp"
         android:text="@string/selection"
         android:textColor="#FFFFFF"
         android:textSize="@dimen/dimens_20sp"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@id/selection"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/dimenes_20dp"
+        android:layout_marginTop="@dimen/dimens_20dp"
         android:background="@drawable/tv_style_with_dark_background"
         android:orientation="vertical">
 
@@ -62,7 +62,7 @@
                 app:layout_constraintStart_toStartOf="@id/search_by_title"
                 app:layout_constraintBottom_toBottomOf="@id/search_by_title"
                 app:layout_constraintTop_toTopOf="@id/search_by_title"
-                android:layout_marginStart="@dimen/dimenes_20dp"
+                android:layout_marginStart="@dimen/dimens_20dp"
                 android:background="@color/fui_transparent"/>
         </android_courses.newsapp.custom.CustomEditTextView>
 
