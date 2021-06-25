@@ -1,7 +1,6 @@
 @file:Suppress("DEPRECATION")
 
 
-package android_courses.newsapp.Utill
 package android_courses.newsapp
 
 import android.app.Application
