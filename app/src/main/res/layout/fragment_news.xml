@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/constraint"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="#343F67"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
     tools:context=".presentation.fragments.NewsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -14,14 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        android:paddingBottom="50dp"
         android:overScrollMode="never"
+        android:paddingBottom="@dimen/dimens_50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_settingsLine"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@id/img_settingsLine" />
 
     <ProgressBar
         android:id="@+id/pagination_progress_bar"
@@ -32,7 +30,6 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
@@ -40,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="false"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/dimens_20dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_union"
         app:layout_constraintBottom_toTopOf="@id/rv_breaking_news"
@@ -51,16 +48,12 @@
         android:id="@+id/img_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="false"
-        android:background="@android:color/transparent"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="@dimen/dimens_10dp"
+        android:layout_marginEnd="@dimen/dimens_20dp"
+        android:layout_marginBottom="@dimen/dimens_5dp"
+        android:background="@color/transparent"
         android:src="@drawable/ic_component_17"
         app:layout_constraintBottom_toTopOf="@id/rv_breaking_news"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
-        app:layout_constraintStart_toEndOf="@+id/img_settingsLine"
-        app:layout_constraintTop_toTopOf="@id/constraint"
-        app:layout_constraintVertical_bias="1.0" />
-
+        app:layout_constraintTop_toTopOf="@id/constraint" />
 </androidx.constraintlayout.widget.ConstraintLayout>

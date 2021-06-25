@@ -3,7 +3,7 @@ package android_courses.newsapp.presentation
 import android.os.Bundle
 import android.widget.Toast
 import android_courses.newsapp.R
-import android_courses.newsapp.Utill.NetworkConnection
+import android_courses.newsapp.NetworkConnection
 import android_courses.newsapp.base.BaseActivity
 
 class MainActivity : BaseActivity(R.id.container){
@@ -20,7 +20,7 @@ class MainActivity : BaseActivity(R.id.container){
         networkConnection = NetworkConnection(application)
         networkConnection.observe(this, { isConnected ->
             if (isConnected) {
-                Toast.makeText(this, "Соединение есть", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Соединение есть", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "No Internet Connection. Please check your internet connection", Toast.LENGTH_SHORT).show()
             }
