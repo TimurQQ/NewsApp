@@ -45,22 +45,23 @@ class SignUpViewModel(private val context: Context) : View.OnClickListener{
         val email = editTextEmail.text.toString().trim { it <= ' ' }
         val password: String = editTextPassword.text.toString().trim { it <= ' ' }
         if (email.isEmpty()) {
-            Toast.makeText(context,"Email is required", Toast.LENGTH_LONG).show()
+            editTextEmail.errorAction={Toast.makeText(context,"Email is required", Toast.LENGTH_LONG).show()}
+            editTextEmail.showError()
             return
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Toast.makeText(context,"Please enter a valid email", Toast.LENGTH_LONG).show()
-            editTextEmail.requestFocus()
+            editTextEmail.errorAction={Toast.makeText(context,"Please enter a valid email", Toast.LENGTH_LONG).show()}
+            editTextEmail.showError()
             return
         }
         if (password.isEmpty()) {
-            Toast.makeText(context,"Password is required", Toast.LENGTH_LONG).show()
-            editTextPassword.requestFocus()
+            editTextPassword.errorAction={Toast.makeText(context,"Password is required", Toast.LENGTH_LONG).show()}
+            editTextPassword.showError()
             return
         }
         if (password.length < 6) {
-            Toast.makeText(context, "Minimum length of password should be 6", Toast.LENGTH_SHORT).show()
-            editTextPassword.requestFocus()
+            editTextPassword.errorAction={Toast.makeText(context,"Minimum length of password should be 6", Toast.LENGTH_LONG).show()}
+            editTextPassword.showError()
             return
         }
         progressBar.visibility = View.VISIBLE
