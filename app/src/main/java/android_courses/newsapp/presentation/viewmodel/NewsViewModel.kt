@@ -16,10 +16,6 @@ class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
     val errorStateLiveData: MutableLiveData<String> = MutableLiveData()
     val loadingMutableLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
-    init {
-        getBreakingNews("us")
-    }
-
     fun getBreakingNews(countryCode: String) = viewModelScope.launch {
         loadingMutableLiveData.postValue(true)
         val response = newsRepository.getBreakingNews(countryCode)

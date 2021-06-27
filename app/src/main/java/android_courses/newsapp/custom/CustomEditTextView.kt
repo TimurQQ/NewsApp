@@ -22,6 +22,8 @@ class CustomEditTextView @JvmOverloads constructor(
         findViewById<EditText>(R.id.custom_edit_text_view).hint = value
     }
 
+    var errorAction = {}
+
     var text : String = ""
         get() = findViewById<EditText>(R.id.custom_edit_text_view).text.toString()
         set(value) {
@@ -37,6 +39,9 @@ class CustomEditTextView @JvmOverloads constructor(
 
     fun setActionOnClick(v: () -> Unit) {
          v.invoke()
+    }
+    fun showError(){
+        errorAction.invoke()
     }
 
     init {

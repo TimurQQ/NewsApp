@@ -54,15 +54,15 @@ class SignInViewModel(private val context: Context) : View.OnClickListener{
         val email = editTextEmail.text.toString().trim { it <= ' ' }
         val password: String = editTextPassword.text.toString().trim { it <= ' ' }
         if (email.isEmpty()) {
-            Toast.makeText(context, "Email is required", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"Email is required", Toast.LENGTH_LONG).show()
             return
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Toast.makeText(context, "Please enter a valid email", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"Please enter a valid email", Toast.LENGTH_LONG).show()
             return
         }
         if (password.isEmpty()) {
-            Toast.makeText(context, "Password is required", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"Password is required", Toast.LENGTH_LONG).show()
             return
         }
         if (password.length < 6) {
