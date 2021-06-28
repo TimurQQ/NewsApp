@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/darkTheme"
-    tools:context=".fragments.FragmentSetting">
-
+    tools:context=".presentation.fragments.FragmentSetting">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/conteinerSetting"
@@ -18,9 +17,7 @@
         android:layout_marginStart="0dp"
         android:backgroundTint="?attr/card_background">
 
-
         <ImageButton
-
             android:id="@+id/jump"
             android:background="@drawable/style_theames"
             android:layout_width="wrap_content"
@@ -36,9 +33,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <androidx.appcompat.widget.AppCompatButton
-android:backgroundTint="?attr/backgroundColor"
+            android:backgroundTint="?attr/backgroundColor"
             android:id="@+id/button_log_out"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
@@ -70,6 +66,7 @@ android:backgroundTint="?attr/backgroundColor"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:backgroundTint="?attr/backgroundColor"
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

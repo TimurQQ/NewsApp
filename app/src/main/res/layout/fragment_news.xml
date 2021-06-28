@@ -1,62 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/constraint"
-    android:backgroundTint="?attr/card_background"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@color/background_color"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.fragments.NewsFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_breaking_news"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
+        android:backgroundTint="?attr/card_background"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimenes_0dp"
-        android:clipToPadding="false"
-        android:paddingBottom="@dimen/dimens_50dp"
-        android:overScrollMode="never"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_settingsLine" />
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/background_color"
+        tools:context=".presentation.fragments.NewsFragment">
 
-    <ProgressBar
-        android:id="@+id/pagination_progress_bar"
-        style="?attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_breaking_news"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimenes_0dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingBottom="@dimen/dimens_50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_settingsLine" />
 
-    <ImageButton
-        android:id="@+id/img_settingsLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="false"
-        android:layout_marginStart="@dimen/dimens_16dp"
-        android:background="@android:color/background_dark"
-        android:backgroundTint="?attr/Button_Color"
-        android:src="@drawable/ic_union"
-        app:layout_constraintBottom_toTopOf="@id/rv_breaking_news"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/constraint" />
+        <ProgressBar
+            android:id="@+id/pagination_progress_bar"
+            style="?attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
-        android:id="@+id/img_settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="false"
-        android:background="@android:color/transparent"
-        android:layout_marginTop="@dimen/dimens_10dp"
-        android:layout_marginEnd="@dimen/dimens_16dp"
-        android:layout_marginBottom="@dimen/dimens_5dp"
-        android:src="@drawable/ic_component_17"
-        app:layout_constraintBottom_toTopOf="@id/rv_breaking_news"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/constraint" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/img_settingsLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="false"
+            android:layout_marginStart="@dimen/dimens_16dp"
+            android:background="@android:color/background_dark"
+            android:backgroundTint="?attr/Button_Color"
+            android:src="@drawable/ic_union"
+            app:layout_constraintBottom_toTopOf="@id/rv_breaking_news"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/constraint" />
+
+        <ImageButton
+            android:id="@+id/img_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="false"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="@dimen/dimens_10dp"
+            android:layout_marginEnd="@dimen/dimens_16dp"
+            android:layout_marginBottom="@dimen/dimens_5dp"
+            android:src="@drawable/ic_component_17"
+            app:layout_constraintBottom_toTopOf="@id/rv_breaking_news"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/constraint" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -3,7 +3,6 @@ package android_courses.newsapp.presentation.fragments
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,40 +19,29 @@ import androidx.appcompat.widget.SwitchCompat
 import com.google.firebase.auth.FirebaseAuth
 
 class FragmentSetting : Fragment() {
-    private val saveData:SaveData
-    by lazy {
+    private val saveData:SaveData by lazy {
         SaveData(requireContext())
     }
-
-
-        private  var switchCompat: SwitchCompat? = null
-
     private val mAuth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
     private val mSettings: SharedPreferences by lazy {
         requireContext().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
     }
+    private  var switchCompat: SwitchCompat? = null
     private lateinit var backButton: AppCompatImageButton
     private lateinit var buttonLogout: AppCompatButton
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_setting, container, false)
-
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
 
         switchCompat=view.findViewById(R.id.on_off)
         switchCompat?.isChecked = saveData.loadLightModeState()
@@ -76,6 +64,4 @@ class FragmentSetting : Fragment() {
             requireActivity().supportFragmentManager.popBackStack()
         }
     }
-
-
 }
