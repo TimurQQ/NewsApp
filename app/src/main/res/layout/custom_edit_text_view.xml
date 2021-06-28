@@ -14,7 +14,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/tv_style"
         android:gravity="center"
-        android:inputType="text"
         android:maxLines="1"
         android:maxLength="24"/>
 
