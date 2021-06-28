@@ -51,7 +51,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/news_logo" />
 
-        <EditText
+        <android_courses.newsapp.custom.CustomEditTextView
             android:id="@+id/editTextEmail"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_email"
@@ -59,7 +59,7 @@
             android:background="@drawable/rounded_edit_text"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:hint="Login (only email)"
+            app:editHint="Login (only email)"
             android:inputType="textEmailAddress"
             android:textColorHint="#AEABAB"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +69,7 @@
             app:layout_constraintWidth_percent="0.8"
             tools:ignore="HardcodedText" />
 
-        <EditText
+        <android_courses.newsapp.custom.CustomEditTextView
             android:id="@+id/editTextPassword"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_email"
@@ -77,7 +77,7 @@
             android:background="@drawable/rounded_edit_text"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:hint="Password"
+            app:editHint="Password"
             android:inputType="textPassword"
             android:textColorHint="#AEABAB"
             app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +89,7 @@
 
         <TextView
             android:id="@+id/textViewSignup"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:text="Don't have account? Sign Up"

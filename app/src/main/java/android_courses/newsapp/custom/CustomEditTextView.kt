@@ -6,8 +6,9 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.EditText
 import android_courses.newsapp.R
+import android_courses.newsapp.R.*
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
-import kotlinx.android.synthetic.main.custom_edit_text_view.view.*
 
 class CustomEditTextView @JvmOverloads constructor(
         context: Context,
@@ -21,6 +22,8 @@ class CustomEditTextView @JvmOverloads constructor(
         findViewById<EditText>(R.id.custom_edit_text_view).hint = value
     }
 
+    var errorAction = {}
+
     var text : String = ""
         get() = findViewById<EditText>(R.id.custom_edit_text_view).text.toString()
         set(value) {
@@ -28,12 +31,26 @@ class CustomEditTextView @JvmOverloads constructor(
         findViewById<EditText>(R.id.custom_edit_text_view).text = Editable.Factory.getInstance().newEditable(value)
     }
 
-    init {
-        View.inflate(context, R.layout.custom_edit_text_view, this)
+    var searchImg : Int = 0
+        set(value) {
+            field = value
+            findViewById<AppCompatImageView>(R.id.search_by_title_img).setImageResource(value)
+        }
 
-        with (context.theme.obtainStyledAttributes(attrs, R.styleable.CustomEditTextView, 0, 0)) {
-            hint = getString(R.styleable.CustomEditTextView_editHint) ?: ""
-            text = getString(R.styleable.CustomEditTextView_getText) ?: ""
+    fun setActionOnClick(v: () -> Unit) {
+         v.invoke()
+    }
+    fun showError(){
+        errorAction.invoke()
+    }
+
+    init {
+        View.inflate(context, layout.custom_edit_text_view, this)
+
+        with (context.theme.obtainStyledAttributes(attrs, styleable.CustomEditTextView, 0, 0)) {
+            hint = getString(styleable.CustomEditTextView_editHint) ?: ""
+            text = getString(styleable.CustomEditTextView_getText) ?: ""
+            searchImg = getResourceId(styleable.CustomEditTextView_img, R.drawable.ic_baseline_youtube_searched_for_24)
         }
     }
 }

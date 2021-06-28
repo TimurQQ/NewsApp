@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimens_550dp"
         android:text="@string/selection"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/newsWhite"
         android:textSize="@dimen/dimens_20sp"
         android:layout_marginTop="@dimen/dimenes_20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,26 +43,16 @@
         android:orientation="vertical">
 
         <android_courses.newsapp.custom.CustomEditTextView
-            android:backgroundTint="?attr/backgroundColor"
             android:id="@+id/search_by_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:editHint="search by keyword"
+            app:img="@drawable/ic_baseline_youtube_searched_for_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/search_by_title_button"
-                android:layout_width="@dimen/dimens_50dp"
-                android:layout_height="@dimen/dimens_50dp"
-                android:src="@drawable/ic_baseline_youtube_searched_for_24"
-                app:layout_constraintStart_toStartOf="@id/search_by_title"
-                app:layout_constraintBottom_toBottomOf="@id/search_by_title"
-                app:layout_constraintTop_toTopOf="@id/search_by_title"
-                android:layout_marginStart="@dimen/dimens_20dp"
-                android:background="@color/fui_transparent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/dimenes_20dp">
         </android_courses.newsapp.custom.CustomEditTextView>
 
     </LinearLayout>

@@ -3,6 +3,8 @@
     <declare-styleable name="CustomEditTextView">
         <attr name="editHint" format="string"/>
         <attr name="getText" format="string"/>
+        <attr name="img" format="reference"/>
+        <attr name="error" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="al">
