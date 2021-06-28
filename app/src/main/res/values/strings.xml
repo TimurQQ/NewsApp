@@ -24,4 +24,8 @@
     <string name="Second_Activity">Welcom toactivity 2</string>
     <string name="Text1">Welcom on DarkMode</string>
     <string name="Text2">Have a look of this application designed\n for you the dark mode on one click by you</string>
+    <string name="noEmail">Email is required</string>
+    <string name="emailDontValid">Please enter a valid email</string>
+    <string name="noPassword">Password is required</string>
+    <string name="minLength">Minimum length of password should be 6</string>
 </resources>

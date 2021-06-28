@@ -69,9 +69,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         if (keyWord == null) {
             viewModel.getBreakingNews("us")
         } else {
-            if (keyWord != null) {
                 viewModel.getNewsByKeyWord(keyWord)
-            }
         }
     }
 
