@@ -8,7 +8,10 @@ import android.widget.*
 import android_courses.newsapp.R
 import android_courses.newsapp.Utill.Constants
 import android_courses.newsapp.Utill.Constants.Companion.IS_REGISTERED
+import android_courses.newsapp.Utill.isVisible
 import android_courses.newsapp.base.BaseActivity
+import android_courses.newsapp.custom.CustomEditTextView
+import androidx.appcompat.widget.AppCompatImageView
 import com.google.firebase.auth.FirebaseAuth
 
 class SignInViewModel(private val context: Context) : View.OnClickListener{
@@ -18,8 +21,8 @@ class SignInViewModel(private val context: Context) : View.OnClickListener{
     private val mSettings: SharedPreferences by lazy {
         context.getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE)
     }
-    private lateinit var editTextEmail: EditText
-    private lateinit var editTextPassword: EditText
+    private lateinit var editTextEmail: CustomEditTextView
+    private lateinit var editTextPassword: CustomEditTextView
     private lateinit var progressBar: ProgressBar
     private lateinit var textViewSignUp: TextView
     private lateinit var buttonLogin: Button
@@ -32,6 +35,9 @@ class SignInViewModel(private val context: Context) : View.OnClickListener{
         buttonLogin = view.findViewById(R.id.buttonLogin)
         textViewSignUp.setOnClickListener(this)
         buttonLogin.setOnClickListener(this)
+
+        editTextEmail.findViewById<AppCompatImageView>(R.id.search_by_title_img).isVisible(false)
+        editTextPassword.findViewById<AppCompatImageView>(R.id.search_by_title_img).isVisible(false)
     }
 
     fun onStart() {
@@ -48,23 +54,23 @@ class SignInViewModel(private val context: Context) : View.OnClickListener{
         val email = editTextEmail.text.toString().trim { it <= ' ' }
         val password: String = editTextPassword.text.toString().trim { it <= ' ' }
         if (email.isEmpty()) {
-            editTextEmail.error = "Email is required"
-            editTextEmail.requestFocus()
+            editTextEmail.errorAction={Toast.makeText(context,"Email is required", Toast.LENGTH_LONG).show()}
+            editTextEmail.showError()
             return
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.error = "Please enter a valid email"
-            editTextEmail.requestFocus()
+            editTextEmail.errorAction={Toast.makeText(context,"Please enter a valid email", Toast.LENGTH_LONG).show()}
+            editTextEmail.showError()
             return
         }
         if (password.isEmpty()) {
-            editTextPassword.error = "Password is required"
-            editTextPassword.requestFocus()
+            editTextPassword.errorAction={Toast.makeText(context,"Password is required", Toast.LENGTH_LONG).show()}
+            editTextPassword.showError()
             return
         }
         if (password.length < 6) {
-            editTextPassword.error = "Minimum length of password should be 6"
-            editTextPassword.requestFocus()
+            editTextPassword.errorAction={Toast.makeText(context,"Minimum length of password should be 6", Toast.LENGTH_LONG).show()}
+            editTextPassword.showError()
             return
         }
         progressBar.visibility = View.VISIBLE

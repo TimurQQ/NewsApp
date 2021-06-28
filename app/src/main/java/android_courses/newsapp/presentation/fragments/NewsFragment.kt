@@ -64,7 +64,15 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
     override fun onResume() {
         super.onResume()
-        SelectionFragment.sharedPreferences?.getString(SelectionFragment.KEY_WORD, "eror")?.let { viewModel.getNewsByKeyWord(it) }
+        var keyWord : String? = SelectionFragment.sharedPreferences?.getString(SelectionFragment.KEY_WORD, "error")
+
+        if (keyWord == null) {
+            viewModel.getBreakingNews("us")
+        } else {
+            if (keyWord != null) {
+                viewModel.getNewsByKeyWord(keyWord)
+            }
+        }
     }
 
     private fun setupRecyclerView() {

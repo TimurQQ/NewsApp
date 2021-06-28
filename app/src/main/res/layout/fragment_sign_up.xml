@@ -56,7 +56,7 @@
             app:layout_constraintTop_toBottomOf="@+id/news_logo"
             tools:ignore="HardcodedText" />
 
-        <EditText
+        <android_courses.newsapp.custom.CustomEditTextView
             android:id="@+id/editTextEmail"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_email"
@@ -74,7 +74,7 @@
             app:layout_constraintWidth_percent="0.8"
             tools:ignore="HardcodedText" />
 
-        <EditText
+        <android_courses.newsapp.custom.CustomEditTextView
             android:id="@+id/editTextPassword"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_email"
