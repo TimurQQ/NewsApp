@@ -54,22 +54,22 @@ class SignInViewModel(private val context: Context) : View.OnClickListener{
         val email = editTextEmail.text.toString().trim { it <= ' ' }
         val password: String = editTextPassword.text.toString().trim { it <= ' ' }
         if (email.isEmpty()) {
-            editTextEmail.errorAction={Toast.makeText(context,"Email is required", Toast.LENGTH_LONG).show()}
+            editTextEmail.errorAction={Toast.makeText(context,context.getString(R.string.noEmail), Toast.LENGTH_LONG).show()}
             editTextEmail.showError()
             return
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.errorAction={Toast.makeText(context,"Please enter a valid email", Toast.LENGTH_LONG).show()}
+            editTextEmail.errorAction={Toast.makeText(context,context.getString(R.string.emailDontValid), Toast.LENGTH_LONG).show()}
             editTextEmail.showError()
             return
         }
         if (password.isEmpty()) {
-            editTextPassword.errorAction={Toast.makeText(context,"Password is required", Toast.LENGTH_LONG).show()}
+            editTextPassword.errorAction={Toast.makeText(context,context.getString(R.string.noPassword), Toast.LENGTH_LONG).show()}
             editTextPassword.showError()
             return
         }
         if (password.length < 6) {
-            editTextPassword.errorAction={Toast.makeText(context,"Minimum length of password should be 6", Toast.LENGTH_LONG).show()}
+            editTextPassword.errorAction={Toast.makeText(context,context.getString(R.string.minLength), Toast.LENGTH_LONG).show()}
             editTextPassword.showError()
             return
         }
