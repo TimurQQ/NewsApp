@@ -33,7 +33,6 @@ class MainActivity : BaseActivity(R.id.container), RestartInterface {
         if (saveData.loadLightModeState() == true) {
             switchCompat?.isChecked = true
         }
-
         fragmentRouter.openSplashFragment()
     }
     fun neworkConnection() {
@@ -57,10 +56,7 @@ class MainActivity : BaseActivity(R.id.container), RestartInterface {
         }
     }
     override fun restartApplication() {
-        val i = Intent(applicationContext, MainActivity::class.java)
-        startActivity(i)
-        finish()
-
+        recreate()
     }
 }
 

@@ -1,10 +1,10 @@
 package android_courses.newsapp.presentation.fragments
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import android_courses.newsapp.NetworkConnection
 import android_courses.newsapp.presentation.viewmodel.NewsViewModel
 import android_courses.newsapp.presentation.NewsViewModelProviderFactory
 import android_courses.newsapp.R
@@ -17,13 +17,18 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_news.*
+import java.io.IOException
 
 class NewsFragment : Fragment(R.layout.fragment_news) {
     private lateinit var buttonSelection: AppCompatImageButton
     private lateinit var buttonSettings: AppCompatImageButton
+    private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var viewModel: NewsViewModel
+    private lateinit var networkConnection: NetworkConnection
+    private var isConnect: Boolean = false
     private val newsAdapter: NewsAdapter by lazy {
         NewsAdapter ({
             Log.d("ClickOnArticle",
@@ -33,11 +38,36 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
                 })
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         val newsRepository = NewsRepository()
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
+        networkConnection = NetworkConnection((context as BaseActivity).application)
+        networkConnection.observe(this, { isConnected ->
+            isConnect = isConnected
+            if (isConnected) {
+                Toast.makeText(context, "Соединение есть", Toast.LENGTH_SHORT).show()
+                val keyWord: String? =
+                    SelectionFragment.sharedPreferences?.getString(SelectionFragment.KEY_WORD, "error")
+
+                if (keyWord == null) {
+                    viewModel.getBreakingNews("us")
+                } else {
+                    viewModel.getNewsByKeyWord(keyWord)
+                }
+            } else {
+                Toast.makeText(
+                    context,
+                    "No Internet Connection. Please check your internet connection",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
 
         viewModel.breakingNewsListLiveData.observe(viewLifecycleOwner, Observer { response ->
@@ -60,18 +90,33 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         buttonSettings.setOnClickListener {
             (requireActivity() as BaseActivity).fragmentRouter.openSettingsFragment()
         }
+        swipeRefresh = view.findViewById(R.id.swipe_refresh)
+        swipeRefresh.setOnRefreshListener {
+            if (isConnect) {
+                viewModel.getBreakingNews("us")
+                SelectionFragment.sharedPreferences?.edit()?.clear()?.apply()
+            }
+            swipeRefresh.isRefreshing = false
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        var keyWord : String? = SelectionFragment.sharedPreferences?.getString(SelectionFragment.KEY_WORD, "error")
+        if (isConnect) {
+            val keyWord: String? =
+                SelectionFragment.sharedPreferences?.getString(SelectionFragment.KEY_WORD, "error")
 
-        if (keyWord == null) {
-            viewModel.getBreakingNews("us")
-        } else {
-            if (keyWord != null) {
+            if (keyWord == null) {
+                viewModel.getBreakingNews("us")
+            } else {
                 viewModel.getNewsByKeyWord(keyWord)
             }
+        } else {
+            Toast.makeText(
+                context,
+                "No Internet Connection. Please check your internet connection",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

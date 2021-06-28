@@ -10,6 +10,7 @@
         android:icon="@drawable/ic_news"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_news_rounded"
+        android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
         android:supportsRtl="true">
         <activity android:name=".presentation.MainActivity"
             android:label="@string/app_name"
