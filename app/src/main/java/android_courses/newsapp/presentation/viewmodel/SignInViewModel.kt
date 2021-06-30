@@ -51,8 +51,8 @@ class SignInViewModel(private val context: Context) : View.OnClickListener{
     }
 
     private fun userLogin() {
-        val email = editTextEmail.text.toString().trim { it <= ' ' }
-        val password: String = editTextPassword.text.toString().trim { it <= ' ' }
+        val email = editTextEmail.text.trim { it <= ' ' }
+        val password: String = editTextPassword.text.trim { it <= ' ' }
         if (email.isEmpty()) {
             editTextEmail.errorAction={Toast.makeText(context,context.getString(R.string.noEmail), Toast.LENGTH_LONG).show()}
             editTextEmail.showError()
@@ -79,7 +79,7 @@ class SignInViewModel(private val context: Context) : View.OnClickListener{
                     progressBar.visibility = View.GONE
                     if (task.isSuccessful) {
                         with (mSettings.edit()) {
-                            putBoolean(android_courses.newsapp.Utill.Constants.IS_REGISTERED, true)
+                            putBoolean(IS_REGISTERED, true)
                             apply()
                         }
                         (context as BaseActivity).fragmentRouter.openNewsFragment()

@@ -42,8 +42,8 @@ class SignUpViewModel(private val context: Context) : View.OnClickListener{
     }
 
     private fun registerUser() {
-        val email = editTextEmail.text.toString().trim { it <= ' ' }
-        val password: String = editTextPassword.text.toString().trim { it <= ' ' }
+        val email = editTextEmail.text.trim { it <= ' ' }
+        val password: String = editTextPassword.text.trim { it <= ' ' }
         if (email.isEmpty()) {
             editTextEmail.errorAction={Toast.makeText(context,context.getString(R.string.noEmail), Toast.LENGTH_LONG).show()}
             editTextEmail.showError()

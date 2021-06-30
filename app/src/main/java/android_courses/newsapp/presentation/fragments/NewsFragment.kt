@@ -11,6 +11,7 @@ import android_courses.newsapp.R
 import android_courses.newsapp.Utill.isVisible
 import android_courses.newsapp.base.BaseActivity
 import android_courses.newsapp.data.db.repository.NewsRepository
+import android_courses.newsapp.presentation.MainActivity.Companion.isConnect
 import android_courses.newsapp.presentation.adapter.NewsAdapter
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.fragment.app.Fragment
@@ -20,7 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_news.*
-import java.io.IOException
 
 class NewsFragment : Fragment(R.layout.fragment_news) {
     private lateinit var buttonSelection: AppCompatImageButton
@@ -28,7 +28,6 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private lateinit var swipeRefresh: SwipeRefreshLayout
     private lateinit var viewModel: NewsViewModel
     private lateinit var networkConnection: NetworkConnection
-    private var isConnect: Boolean = false
     private val newsAdapter: NewsAdapter by lazy {
         NewsAdapter ({
             Log.d("ClickOnArticle",
@@ -45,9 +44,8 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
         networkConnection = NetworkConnection((context as BaseActivity).application)
         networkConnection.observe(this, { isConnected ->
-            isConnect = isConnected
+            isConnect = if (isConnected) 1 else 0
             if (isConnected) {
-                Toast.makeText(context, "Соединение есть", Toast.LENGTH_SHORT).show()
                 val keyWord: String? =
                     SelectionFragment.sharedPreferences?.getString(SelectionFragment.KEY_WORD, "error")
 
@@ -92,7 +90,7 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         }
         swipeRefresh = view.findViewById(R.id.swipe_refresh)
         swipeRefresh.setOnRefreshListener {
-            if (isConnect) {
+            if (isConnect == 1) {
                 viewModel.getBreakingNews("us")
                 SelectionFragment.sharedPreferences?.edit()?.clear()?.apply()
             }
@@ -102,21 +100,22 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
     override fun onResume() {
         super.onResume()
-        if (isConnect) {
-            val keyWord: String? =
-                SelectionFragment.sharedPreferences?.getString(SelectionFragment.KEY_WORD, "error")
-
-            if (keyWord == null) {
-                viewModel.getBreakingNews("us")
-            } else {
-                viewModel.getNewsByKeyWord(keyWord)
-            }
-        } else {
-            Toast.makeText(
+        when(isConnect) {
+            0 -> {Toast.makeText(
                 context,
                 "No Internet Connection. Please check your internet connection",
                 Toast.LENGTH_SHORT
-            ).show()
+            ).show()}
+            1 -> {
+                val keyWord: String? =
+                    SelectionFragment.sharedPreferences?.getString(SelectionFragment.KEY_WORD, "error")
+
+                if (keyWord == null) {
+                    viewModel.getBreakingNews("us")
+                } else {
+                    viewModel.getNewsByKeyWord(keyWord)
+                }
+            }
         }
     }
 

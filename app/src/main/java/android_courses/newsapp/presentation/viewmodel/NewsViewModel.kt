@@ -5,6 +5,7 @@ import android_courses.newsapp.data.db.repository.NewsRepository
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.android.synthetic.main.fragment_news.*
 import kotlinx.coroutines.launch
 
 class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
