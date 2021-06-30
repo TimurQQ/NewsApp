@@ -3,13 +3,10 @@ package android_courses.newsapp.presentation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android_courses.newsapp.R
 import android_courses.newsapp.Utill.loadFromUrl
 import android_courses.newsapp.domain.entity.Article
 import androidx.appcompat.widget.AppCompatImageButton
-import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
@@ -25,18 +22,12 @@ class NewsAdapter(val onClick: (Article) -> Unit, val onClickDownload: (String) 
     private val storageRef = storage.reference
     private var builder = GsonBuilder().setPrettyPrinting()
     private var gson = builder.create()
+    var listOfItems : List<Article> = emptyList()
     inner class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val download_button : AppCompatImageButton by lazy {
             itemView.findViewById<AppCompatImageButton>(R.id.imageView)
         }
     }
-
-    private val differCallback = object : DiffUtil.ItemCallback<Article>() {
-        override fun areItemsTheSame(oldItem: Article, newItem: Article) = oldItem.url == newItem.url
-        override fun areContentsTheSame(oldItem: Article, newItem: Article) = oldItem == newItem
-    }
-
-    val differ = AsyncListDiffer(this, differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ArticleViewHolder(
         LayoutInflater.from(
@@ -45,11 +36,11 @@ class NewsAdapter(val onClick: (Article) -> Unit, val onClickDownload: (String) 
     )
 
     override fun getItemCount(): Int {
-        return differ.currentList.size
+        return listOfItems.size
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        val article = differ.currentList[position]
+        val article = listOfItems[position]
         holder.itemView.apply {
             iv_article_image.loadFromUrl(article.urlToImage)
             tv_title.text = article.title

@@ -69,7 +69,8 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         setupRecyclerView()
 
         viewModel.breakingNewsListLiveData.observe(viewLifecycleOwner, Observer { response ->
-            newsAdapter.differ.submitList(response.articles)
+            newsAdapter.listOfItems = response
+            newsAdapter.notifyDataSetChanged()
         })
 
         viewModel.errorStateLiveData.observe(viewLifecycleOwner, Observer { error ->
@@ -91,8 +92,8 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
         swipeRefresh = view.findViewById(R.id.swipe_refresh)
         swipeRefresh.setOnRefreshListener {
             if (isConnect == 1) {
-                viewModel.getBreakingNews("us")
                 SelectionFragment.sharedPreferences?.edit()?.clear()?.apply()
+                viewModel.getBreakingNews("us")
             }
             swipeRefresh.isRefreshing = false
         }
